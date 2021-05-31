@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Categorias')
+@section('title', 'Tramites')
 
 @section('content_header')
     <h1>Categorias</h1>
@@ -15,5 +15,5 @@
 @stop
 
 @section('js')
-    <script> console.log('Categorias'); </script>
+    <script> console.log('Tramites'); </script>
 @stop

@@ -244,19 +244,19 @@ return [
         ],
         [
             'text' => 'Adminitrar Categorias',
-            'url'  => 'admin/categorias',
+            'route'  => 'admin.categorias.index',
             'icon' => 'fas fa-fw fa-tags',
+        ],
+        [
+            'text' => 'Administrar Municipios',
+            'route' => 'admin.municipios.index',
+            'icon' => 'fas fa-fw fa-map-pin',
         ],
         [
             'text' => 'Administrar Trámites',
             'url' => 'admin/tramites',
             'icon' => 'fas fa-fw fa-file-alt',
-        ],
-        [
-            'text' => 'Administrar Municipios',
-            'url' => 'admin/municipios',
-            'icon' => 'fas fa-fw fa-map-pin',
-        ],
+        ], 
         ['header' => 'Encuestas'],
         [
             'text' => 'Crear encuesta',
