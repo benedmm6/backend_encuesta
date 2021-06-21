@@ -41,7 +41,7 @@
                         <strong>{{session('info')}}</strong>
                     </div>
                     
-                @endif
+            @endif
 
             <div class="card">
                 
@@ -80,7 +80,7 @@
         
                                 @foreach ($categorias as $categoria)
                                     <tr>
-                                        <td>{{ $categoria->id }}</td>
+                                        <td>{{ ($loop->index)+1 }}</td>
                                         <td>{{ $categoria->nombre_categoria }}</td>
                                         <td width='10px'>
                                             <div class="btn-group">

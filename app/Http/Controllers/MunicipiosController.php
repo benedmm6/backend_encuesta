@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
 use App\Models\municipios;
+
+use Illuminate\Support\Facades\Storage;
 
 class MunicipiosController extends Controller
 {
@@ -15,6 +19,7 @@ class MunicipiosController extends Controller
      */
     public function index()
     {
+
         $municipios = municipios::all();
 
         return view('dash.municipios.indexMunicipios', compact('municipios'));
@@ -38,7 +43,39 @@ class MunicipiosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->file('file');
+
+        // return Storage::put('iconos', $request->file('file'));
+
+        $validated = $request->validate([
+            'nombre_municipio' => 'required|unique:municipios'
+        ]);
+
+         $nombre =  $request->input('nombre_municipio');
+
+         if($request->file('file')){
+             
+            // $url = Storage::put('iconos', $request->file('file'),'public');
+
+            $name = $request->file('file')->getClientOriginalName();
+
+            $url = Storage::putFileAs(
+                'iconos', $request->file('file'), $name,'public'
+            );
+         
+        }else{
+        
+            $url = 'iconos/vacio.png';
+        
+        }
+
+         municipios::create([
+             'nombre_municipio' => $nombre,
+             'icono' => $url
+         ]);
+
+        return redirect()->route('admin.municipios.index')->with('info','ok');
+
     }
 
     /**
@@ -49,7 +86,14 @@ class MunicipiosController extends Controller
      */
     public function show($id)
     {
-        //
+        $municipio = municipios::find($id);
+
+        $idMunicipio = $id;
+
+        return response()->json($municipio);
+
+        redirect()->route('admin.municipios.index', compact('idMunicipio'));
+
     }
 
     /**
@@ -72,7 +116,37 @@ class MunicipiosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $validated = $request->validate([
+        //     'nombre_municipio' => 'required|unique:municipios'
+        // ]);
+
+        $municipio = municipios::find($id);
+
+        if($request->file('file2')){
+
+            Storage::delete($request->input('foto_actual'));
+
+            $name = $request->file('file2')->getClientOriginalName();
+
+            $url = Storage::putFileAs(
+                'iconos', $request->file('file2'), $name,'public'
+            );
+
+        }else{
+
+            $url = $request->input('foto_actual');
+        
+        }
+
+        $update = [
+            "nombre_municipio" => $request->input('nombre_municipio'),
+            "icono" => $url,
+        ];
+
+        $municipio->update($update);
+
+        return redirect()->route('admin.municipios.index')->with('info','ok_edit');
+
     }
 
     /**
@@ -83,6 +157,15 @@ class MunicipiosController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+
+        $municipio = municipios::find($id);
+
+        Storage::delete($municipio->icono);
+
+        $municipio->delete();
+
+        return response()->json(['success'=>'ELIMINADO']);
+
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\MunicipiosController;
+use App\Http\Controllers\EncuestasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,14 +16,27 @@ use App\Http\Controllers\MunicipiosController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
+    return view('frontend.index');
+})->name('home');
+
+Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
+
+Route::get('/registro', function () {
+    return view('auth.register');
+})->name('registro');
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('dash', function () {
     return view('dash.index');
 })->name('dash');
+
+// RUTA CRUD PARA LAS ENCUESTAS
+
+Route::middleware(['auth:sanctum', 'verified'])->resource('encuestas', EncuestasController::class)->names('admin.encuestas');
 
 // RUTA CRUD PARA LAS CATEGORIAS
 Route::middleware(['auth:sanctum', 'verified'])->resource('categorias', CategoriasController::class)->names('admin.categorias');

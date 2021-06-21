@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/dash',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -233,15 +233,26 @@ return [
         // Sidebar items:
         [
             'text'        => 'Inicio',
-            'url'         => 'admin/home',
+            'url'         => 'dash',
             'icon'        => 'fas fa-fw fa-home',
         ],
-        ['header' => 'Administración'],
+        ['header' => 'Usuarios'],
         [
             'text' => 'Administrar Usuarios',
             'url' => 'admin/usuarios',
             'icon' => 'fas fa-fw fa-users',
         ],
+        [
+            'text' => 'Roles',
+            'url' => 'admin/usuarios',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+        [
+            'text' => 'Permisos',
+            'url' => 'admin/usuarios',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+        ['header' => 'Administración'],
         [
             'text' => 'Adminitrar Categorias',
             'route'  => 'admin.categorias.index',
@@ -259,9 +270,14 @@ return [
         ], 
         ['header' => 'Encuestas'],
         [
-            'text' => 'Crear encuesta',
-            'url' => 'admin/nueva/encuesta',
+            'text' => 'Administrar encuestas',
+            'route' => 'admin.encuestas.index',
             'icon' => 'fas fa-fw fa-file-signature',
+        ],
+        [
+            'text' => 'Crear encuesta',
+            'route' => 'admin.encuestas.create',
+            'icon' => 'fas fa-fw fa-file-medical',
         ],
     ],
 
@@ -346,7 +362,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
