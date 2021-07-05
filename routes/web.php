@@ -28,13 +28,19 @@ Route::get('/registro', function () {
     return view('auth.register');
 })->name('registro');
 
-
-
 Route::middleware(['auth:sanctum', 'verified'])->get('dash', function () {
     return view('dash.index');
 })->name('dash');
 
 // RUTA CRUD PARA LAS ENCUESTAS
+
+Route::delete('encuestas/{id}/preguntas/delete', [EncuestasController::class, 'destroyPregunta'])->name('admin.encuestas.deletePreguntas');
+
+Route::post('encuestas/{id}/preguntas/create', [EncuestasController::class, 'storePreguntas'])->name('admin.encuestas.storePreguntas');
+
+Route::get('encuestas/{id}/preguntas', [EncuestasController::class, 'indexPreguntas'])->name('admin.encuestas.indexPreguntas');
+
+Route::post('encuestas/{id}/estado', [EncuestasController::class, 'updateEstado'])->name('admin.encuestas.updateEstado');
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('encuestas', EncuestasController::class)->names('admin.encuestas');
 

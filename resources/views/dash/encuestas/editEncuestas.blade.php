@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Crear encuesta')
+@section('title', 'Editar encuesta')
 
 @section('content_header')
 
@@ -10,7 +10,7 @@
             
             <div class="col-sm-6">
 
-                <h1>Crear una encuesta</h1>
+                <h1>Editar encuesta</h1>
 
             </div>
             
@@ -26,7 +26,7 @@
 
                     </li>
 
-                    <li class="breadcrumb-item active">Crear encuesta</li>
+                    <li class="breadcrumb-item active">Editar encuesta</li>
             
                 </ol>
 
@@ -57,7 +57,7 @@
     
                     <div class="card-body">
 
-                        {!! Form::open(['route' => 'admin.encuestas.store']) !!}
+                        {!! Form::model($encuesta, ['route' => ['admin.encuestas.update', $encuesta], 'method' => 'put']) !!}
 
                         <div class="form-group">
 
@@ -97,7 +97,7 @@
 
                                 {!! Form::label('vigencia', 'Vigencia') !!}
 
-                                {!! Form::date('fecha_vencimiento', null, ['class' =>'form-control']) !!}
+                                {!! Form::date('fecha_vencimiento', date('Y-m-d', strtotime($encuesta->fecha_vencimiento)), ['class' =>'form-control']) !!}
     
                             </div>
     
@@ -105,7 +105,7 @@
 
                                 {!! Form::label('categoria', 'Categoria') !!}
 
-                                {!! Form::select('id_categoria', $categorias, null, ['class' =>'form-control','placeholder' => 'Selecciona una categoria']); !!}
+                                {!! Form::select('id_categoria', $categorias, $encuesta->id_categoria, ['class' =>'form-control','placeholder' => 'Selecciona una categoria']); !!}
     
                             </div>
 
@@ -113,13 +113,13 @@
 
                                 {!! Form::label('estado', 'Estado') !!}
 
-                                {!! Form::select('estado', ['0' => 'Borrador', '1' => 'Publicado'], '0', ['class' =>'form-control']); !!}
+                                {!! Form::select('estado', ['0' => 'Borrador', '1' => 'Publicado'], $encuesta->estado, ['class' =>'form-control']); !!}
     
                             </div>
 
                         </div>
 
-                            {!! Form::submit('Crear encuesta', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Editar encuesta', ['class' => 'btn btn-primary btnEditar', 'idEncuesta' => $encuesta->id]) !!}
 
                         {!! Form::close() !!}
 
@@ -140,7 +140,23 @@
 
     <script>
 
+const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        @if(session('info') == 'editado')
         
+             Toast.fire('La encuesta se actualizo correctamente', '', 'success');
+
+        @endif
 
     </script>
 
