@@ -3,6 +3,7 @@
     --dark: #000000;
     --light: #ffffff;
     --grey: #f5f5f5;
+    --secondary: #B38E5D;
 }
 body {
     font-family: 'Poppins', sans-serif;
@@ -20,6 +21,10 @@ body {
 
 .navbar .btn {
     padding: .625rem 1.25rem !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
 }
 
 .text-primary {

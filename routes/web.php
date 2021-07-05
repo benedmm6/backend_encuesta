@@ -6,6 +6,9 @@ use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\EncuestasController;
 
+use App\Http\Controllers\HomeCategoriasController;
+use App\Http\Controllers\HomeEncuestaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +31,16 @@ Route::get('/registro', function () {
     return view('auth.register');
 })->name('registro');
 
+// RUTA DE LAS CATEGORIAS DEL FRONT-END
+
+Route::get('/categorias', [HomeCategoriasController::class, 'index'])->name('home.categorias');
+
+Route::get('/categorias/{id}', [HomeCategoriasController::class, 'showCategoria'])->name('home.categorias.show');
+
+Route::get('home/encuesta/categoria/{categoria}/municipio/{municipio}', [HomeEncuestaController::class, 'showEncuesta'])->name('home.encuesta.show');
+
+Route::get('home/encuesta/categoria/{categoria}/municipio/{municipio}/encuesta/{encuesta}', [HomeEncuestaController::class, 'homeEncuesta'])->name('home.encuesta.index');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('dash', function () {
     return view('dash.index');
 })->name('dash');
@@ -45,7 +58,7 @@ Route::post('encuestas/{id}/estado', [EncuestasController::class, 'updateEstado'
 Route::middleware(['auth:sanctum', 'verified'])->resource('encuestas', EncuestasController::class)->names('admin.encuestas');
 
 // RUTA CRUD PARA LAS CATEGORIAS
-Route::middleware(['auth:sanctum', 'verified'])->resource('categorias', CategoriasController::class)->names('admin.categorias');
+Route::middleware(['auth:sanctum', 'verified'])->resource('admin/categorias', CategoriasController::class)->names('admin.categorias');
 
 // RUTA CRUD PARA LOS MUNICIPIOS
 Route::middleware(['auth:sanctum', 'verified'])->resource('municipios', MunicipiosController::class)->names('admin.municipios');
