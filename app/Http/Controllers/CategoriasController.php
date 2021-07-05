@@ -13,6 +13,13 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+         $this->middleware('can:admin.categorias.index')->only('index');
+         $this->middleware('can:admin.categorias.edit')->only('edit');
+         $this->middleware('can:admin.categorias.create')->only('create');
+         $this->middleware('can:admin.categorias.destroy')->only('destroy');
+    }
     public function index()
     {
         $categorias = categorias::all();

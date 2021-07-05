@@ -236,48 +236,65 @@ return [
             'url'         => 'dash',
             'icon'        => 'fas fa-fw fa-home',
         ],
-        ['header' => 'Usuarios'],
-        [
-            'text' => 'Administrar Usuarios',
-            'url' => 'admin/usuarios',
-            'icon' => 'fas fa-fw fa-users',
+                
+        ['header' => 'Usuarios',
+         'can' => 'usario-mang',
         ],
+        [          
+            'text' => 'Administrar Usuarios',
+            'route' => 'admin.usuarios.index',
+            'icon' => 'fas fa-fw fa-users',
+            'can'    => 'admin.usuarios.index',             
+        ],
+ 
         [
             'text' => 'Roles',
-            'url' => 'admin/usuarios',
+            'route' => 'admin.roles.index',
             'icon' => 'fas fa-fw fa-users',
+            'can' =>'admin.roles.index',
         ],
         [
             'text' => 'Permisos',
-            'url' => 'admin/usuarios',
+            'route' => 'admin.permisos.index',
             'icon' => 'fas fa-fw fa-users',
+            'can' =>'admin.permisos.index',
         ],
-        ['header' => 'Administración'],
+        ['header' => 'Administración',
+         'can' => ['admin.categorias.index',
+         'admin.municipios.index',
+         'admin.tramites.index'
+    ],
+        ],
         [
             'text' => 'Adminitrar Categorias',
             'route'  => 'admin.categorias.index',
             'icon' => 'fas fa-fw fa-tags',
+            'can'=> 'admin.categorias.index',
         ],
         [
             'text' => 'Administrar Municipios',
             'route' => 'admin.municipios.index',
             'icon' => 'fas fa-fw fa-map-pin',
+            'can'  =>  'admin.municipios.index',
         ],
         [
             'text' => 'Administrar Trámites',
-            'url' => 'admin/tramites',
+            'route' => 'admin.tramites.index',
             'icon' => 'fas fa-fw fa-file-alt',
+            'can'  =>  'admin.tramites.index'
         ], 
         ['header' => 'Encuestas'],
         [
             'text' => 'Administrar encuestas',
             'route' => 'admin.encuestas.index',
             'icon' => 'fas fa-fw fa-file-signature',
+            'can' => 'admin.encuestas.index'
         ],
         [
             'text' => 'Crear encuesta',
             'route' => 'admin.encuestas.create',
             'icon' => 'fas fa-fw fa-file-medical',
+            'can' => 'admin.encuestas.index'
         ],
     ],
 

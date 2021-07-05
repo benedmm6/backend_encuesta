@@ -43,7 +43,8 @@ class EncuestasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+
+       public function index(Request $request)
     {
         $encuestas = encuestas::select('encuestas.*', 'categorias.nombre_categoria')
                 ->join('categorias', 'encuestas.id_categoria', '=', 'categorias.id')
