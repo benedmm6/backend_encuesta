@@ -10,12 +10,19 @@ use Illuminate\Support\Facades\DB;
 
 class TramitesController extends Controller
 {
+    public function __construct()
+    {
+         $this->middleware('can:admin.tramites.index')->only('index');
+         $this->middleware('can:admin.tramites.edit')->only('edit');
+         $this->middleware('can:admin.tramites.create')->only('create');
+         $this->middleware('can:admin.tramites.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index (Request $request)
     {
         $texto= $request->get('busqueda');
         $tramites = DB::table('tramites')
@@ -80,7 +87,7 @@ class TramitesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(tramites $tramite,)
+    public function edit(tramites $tramite)
     {
         $municipios= municipios::pluck('nombre_municipio','id');
         $categorias= categorias::pluck('nombre_categoria','id');

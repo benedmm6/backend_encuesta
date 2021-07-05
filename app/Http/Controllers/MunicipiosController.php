@@ -17,6 +17,13 @@ class MunicipiosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+         $this->middleware('can:admin.municipios.index')->only('index');
+         $this->middleware('can:admin.municipios.edit')->only('edit');
+         $this->middleware('can:admin.municipios.create')->only('create');
+         $this->middleware('can:admin.municipios.destroy')->only('destroy');
+    }
     public function index()
     {
 

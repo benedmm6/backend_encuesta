@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
-class EncuestasController extends Controller
+class UsuariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,14 +15,16 @@ class EncuestasController extends Controller
      */
     public function __construct()
     {
-         $this->middleware('can:admin.encuestas.index')->only('index');
-         $this->middleware('can:admin.encuestas.edit')->only('edit');
-         $this->middleware('can:admin.encuestas.create')->only('create');
-         $this->middleware('can:admin.encuestas.destroy')->only('destroy');
+         $this->middleware('can:admin.usuarios.index')->only('index');
+         $this->middleware('can:admin.usuarios.edit')->only('edit');
+         $this->middleware('can:admin.usuarios.create')->only('create');
+         $this->middleware('can:admin.usuarios.destroy')->only('destroy');
     }
     public function index()
     {
-        return view('dash.encuestas.indexEncuestas');
+        $usuarios= User::all();
+  
+        return view('dash.usuarios.indexUsuarios', compact('usuarios'));
     }
 
     /**
@@ -30,7 +34,9 @@ class EncuestasController extends Controller
      */
     public function create()
     {
-        return view('dash.encuestas.createEncuestas');
+        //
+        $roles= Role::all();
+        return view('dash.usuarios.createUsuarios',compact('roles'));
     }
 
     /**
@@ -42,6 +48,16 @@ class EncuestasController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|unique:usuarios'
+        ]);        
+  
+      User::create($request->all());
+
+      
+       
+
+        return redirect()->route('admin.usuarios.index')->with('info','El usuario se agrego correctamente');
     }
 
     /**
@@ -61,9 +77,11 @@ class EncuestasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $usuario)
     {
         //
+        $roles= Role::all();
+        return view('dash.usuarios.editUsuarios',compact('usuario','roles'));
     }
 
     /**
@@ -73,9 +91,11 @@ class EncuestasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $usuario)
     {
         //
+        $usuario->roles()->sync($request->roles);
+        return redirect()->route('admin.usuarios.edit',$usuario)->with('info','Se asigno un rol correctamente');
     }
 
     /**

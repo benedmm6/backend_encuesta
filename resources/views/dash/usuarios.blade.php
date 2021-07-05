@@ -15,5 +15,5 @@
 @stop
 
 @section('js')
-    <script> console.log('usuarios'); </script>
+    <script> console.log('Usuarios'); </script>
 @stop
