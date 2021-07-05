@@ -165,7 +165,6 @@ class MunicipiosController extends Controller
     public function destroy($id)
     {
 
-
         $municipio = municipios::find($id);
 
         Storage::delete($municipio->icono);

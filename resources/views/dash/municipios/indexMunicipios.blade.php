@@ -154,7 +154,6 @@
 @section('js')
 
     <script type="text/javascript">
-
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -165,65 +164,41 @@
                 toast.addEventListener('mouseenter', Swal.stopTimer)
                 toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-        })
+        });
 
         @if(session('info') == 'ok')
         
-             Toast.fire('El municipio se agrego correctamente', '', 'success')
-
+             Toast.fire('El municipio se agrego correctamente', '', 'success');
             // Toast.fire({
             //     icon: 'success',
             //     title: 'Signed in successfully'
             // })
-
         @endif
-
         @if(session('info') == 'ok_edit')
-
-            Toast.fire('El municipio se actualizo correctamente', '', 'success')
+            Toast.fire('El municipio se actualizo correctamente', '', 'success');
             
         @endif
-
     </script>
 
     <script type="text/javascript">
-
             $(document).ready(function(){
-
-
                 $(".picture").attr("src", `http://encuestas.test/storage/iconos/vacio.png`);
-
                 $('.file').change(function(){
        
                     var imagen = this.files[0];
-
                     var datosImagen = new FileReader;
-
                     datosImagen.readAsDataURL(imagen);
-
                     $(datosImagen).on('load', function(event){
-
                         $(".picture").attr("src", event.target.result);
-
                         console.log(rutaImagen);
-
                     });
-
                 });
-
-
                 $('.tablaMunicipios tbody').on('click', '.btnEditarMunicipio', function(){
-
                     $(".picture").attr("src", `http://encuestas.test/storage/iconos/vacio.png`);
-
                     $('#editNombre').val('');
-
                     $('#idMunicipio').val('');
-
                     var idMunicipio = $(this).attr("idMunicipio");
-
                     let _url = `http://encuestas.test/municipios/${idMunicipio}`;
-
                     $.ajax({
                         url: _url,
                         type: "GET",
@@ -233,34 +208,24 @@
                         dataType: "json",
                         success: function(response){
                             if(response){
-
                                 $('#idMunicipio').val(response.id);
-
                                 $('#editNombre').val(response.nombre_municipio);
-
                                 $('#foto_actual').val(response.icono);
-
                                 if(response.icono != ""){
                                     $(".picture").attr("src", `http://encuestas.test/storage/${response.icono}`);
                                 }else{
                                     $(".picture").attr("src", `http://encuestas.test/storage/iconos/vacio.png`);
                                 }
-
                                 $("#editar").attr('action', `http://encuestas.test/municipios/${response.id}`)
               
                             }                
                         }
                     });
                 });
-
                 $('.tablaMunicipios tbody').on('click', '.btnEliminar', function(){
-
                     var idMunicipio = $(this).attr("idMunicipio");
-
                     let _url = `http://encuestas.test/municipios/${idMunicipio}`;
-
                     let _token   = $('meta[name="csrf-token"]').attr('content');
-
                     Swal.fire({
                             title: '¿Está seguro de borrar el municipio?',
                             text: '¡Si no lo está puede cancelar la acción!',
@@ -281,19 +246,13 @@
                                 _token: _token
                                 },
                                 success: function(response) {
-
                                     window.location.href = "{{ route('admin.municipios.index')}}";
-
                                     Toast.fire('El municipio se elimino correctamente', '', 'success')
-
                                 }
                             });
                         } 
-                    })
-
+                    });
                 });
-
             });
-
     </script>
 @stop
