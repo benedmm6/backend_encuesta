@@ -144,7 +144,7 @@
 
                     <hr class="mb-4">
 
-                    <button class="btn btn-default btn-lg btn-block" type="submit">Cancelar</button>
+                    <button class="btn btn-default btn-lg btn-block" type="submit">cancelar</button>
 
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Guardar</button>
 

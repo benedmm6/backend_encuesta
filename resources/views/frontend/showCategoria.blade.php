@@ -10,7 +10,7 @@
 
         <h2 class="display-4 fw-bold text-primary">Autoridades Municipales de Tabasco<span class="text-dark">.</span></h2>
             
-        <p class="lead mb-5">Seleccione un municipio</p>
+        <p class="lead mb-5">Seleccione un municipios</p>
 
         <div class="row gx-5">
 

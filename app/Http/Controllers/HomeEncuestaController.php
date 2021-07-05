@@ -48,6 +48,8 @@ class HomeEncuestaController extends Controller
 
         $idCategoria = $categoria;
 
+        $id ='xd';
+
         $idMunicipio = $municipio;
 
         $encuestas = encuestas::where('encuestas.id_categoria', '=', $categoria)

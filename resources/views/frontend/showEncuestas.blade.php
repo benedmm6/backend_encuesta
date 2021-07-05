@@ -8,7 +8,7 @@
     
     <h2 class="display-4 fw-bold text-primary">Encuestas<span class="text-dark">.</span></h2>
         
-        <p class="lead mb-5">Seleccione una encuesta</p>
+        <p class="lead mb-5">Seleccione una encuestas</p>
         
         <div class="row gx-5">
 

@@ -12,6 +12,8 @@ class HomeCategoriasController extends Controller
 {
     public function index(){
 
+        $id ='xd';
+
         $categorias = categorias::all();
 
         return view('frontend.categorias', compact('categorias'));

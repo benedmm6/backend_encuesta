@@ -37,6 +37,8 @@ Route::get('/registro', function () {
 
 // RUTA DE LAS CATEGORIAS DEL FRONT-END
 
+// RUTAS DE LAS ENCUESTAS
+
 Route::get('/categorias', [HomeCategoriasController::class, 'index'])->name('home.categorias');
 
 Route::get('/categorias/{id}', [HomeCategoriasController::class, 'showCategoria'])->name('home.categorias.show');

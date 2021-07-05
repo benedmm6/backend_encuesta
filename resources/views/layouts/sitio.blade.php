@@ -25,7 +25,7 @@
 
             <div class="container">
 
-                <a class="navbar-brand fw-bold" href="#"><strong>tabasco</strong>.gob.mx</a>
+                <a class="navbar-brand fw-bold" href="#"><strong>tabascos</strong>.gob.mx</a>
 
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

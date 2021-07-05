@@ -2,7 +2,7 @@
 
     $inicio = [
         "titulo" => "Foro de consulta ciudadana",
-        "descripcion" => "El debate ciudadano y los foros de opinión son los mecaniscos
+        "descripcion" => "El debate ciudadano y los foros de opinión son los mecanismos
         de participación ciudadana de democracia interactiva, los cuales buscan abrir espacion
         para expresión y manifestación de ideas de los especialistas, los consejos consultivos,
         los OSCs y población en general, sobre los temas de relevancia y actualidad para el municipio"

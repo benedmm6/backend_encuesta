@@ -23,7 +23,7 @@
             
                         <div class="d-flex mb-4">
                             
-                            <p class="flex-grow-1 text-dark mb-0">Categoria</p>
+                            <p class="flex-grow-1 text-dark mb-0">Categorias</p>
             
                         </div>
                         
