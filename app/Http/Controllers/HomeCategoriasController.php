@@ -8,15 +8,33 @@ use App\Models\categorias;
 
 use App\Models\municipios;
 
+use App\Models\encuestas;
+
+use Illuminate\Support\Facades\DB;
+
 class HomeCategoriasController extends Controller
 {
     public function index(){
 
-        $id ='xd';
+        if(!empty(session('user_id'))){
 
-        $categorias = categorias::all();
+            $categorias = categorias::all();
 
-        return view('frontend.categorias', compact('categorias'));
+            $hoy = date("Y-m-d");
+
+            $encuestas = encuestas::where('estado', '=', '1' )
+                                ->whereRaw('CURDATE() BETWEEN date(created_at) AND date(fecha_vencimiento)')->get();
+
+            $totalCategoria = encuestas::select(DB::raw('id_categoria, count(*) as total'))
+                                    ->where('estado', '=', '1' )
+                                    ->whereRaw('CURDATE() BETWEEN date(created_at) AND date(fecha_vencimiento)')
+                                    ->groupBy('id_categoria')->get();
+
+            return view('frontend.categorias', compact('categorias','encuestas', 'totalCategoria'));
+
+        }
+
+         return redirect()->route('home.usuarios.index');
 
     }
 
@@ -26,7 +44,13 @@ class HomeCategoriasController extends Controller
 
         $municipios = municipios::all();
 
-        return view('frontend.showCategoria', compact('categoria','municipios'));
+        $hoy = date("Y-m-d");
+
+        $encuestas = encuestas::where('estado', '=', '1' )
+                                ->where('id_categoria', '=', $id)
+                                ->whereRaw('CURDATE() BETWEEN date(created_at) AND date(fecha_vencimiento)')->get();
+
+        return view('frontend.showCategoria', compact('categoria','municipios','encuestas'));
 
     }
 }

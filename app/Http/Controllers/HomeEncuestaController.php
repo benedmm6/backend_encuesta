@@ -10,12 +10,14 @@ use App\Models\preguntas;
 
 use App\Models\opciones_respuestas;
 
+use App\Models\usuarios_respuestas;
+
 use App\Models\tramites;
 
 
 class HomeEncuestaController extends Controller
 {
-    public function homeEncuesta($categoria, $municipio, $encuesta){
+    public function homeEncuesta($categoria,$encuesta, $municipio = null){
 
         $idEncuesta = $encuesta;
 
@@ -36,9 +38,18 @@ class HomeEncuestaController extends Controller
                     ->where('encuestas.id', '=', $idEncuesta)
                     ->orderBy('opciones_respuestas.orden_opcion')->get();
 
-        $tramites = tramites::where('id_categoria', '=', $idCategoria)
+        if($municipio == null){
+
+            $tramites = tramites::where('id_categoria', '=', $idCategoria)
+                            ->orderBy('nombre_tramite','asc')->get();
+            
+        }else{
+
+            $tramites = tramites::where('id_categoria', '=', $idCategoria)
                             ->where('id_municipio', '=', $idMunicipio)
                             ->orderBy('nombre_tramite','asc')->get();
+
+        }
 
         return view('frontend.homeEncuesta', compact('preguntas','encuesta','opciones','tramites'));
 
@@ -48,14 +59,54 @@ class HomeEncuestaController extends Controller
 
         $idCategoria = $categoria;
 
-        $id ='xd';
-
         $idMunicipio = $municipio;
 
         $encuestas = encuestas::where('encuestas.id_categoria', '=', $categoria)
                                 ->where('encuestas.estado', '=', '1' )->get();
 
         return view('frontend.showEncuestas', compact('encuestas','idCategoria','idMunicipio'));
+
+    }
+
+    public function storeRespuesta(Request $request){
+
+        $datos = $request->all();
+
+        foreach ($datos['data'] as $dato) {
+            // echo $dato['id_pregunta'];
+
+            if($dato['tipo_pregunta'] == 'variasOpciones' || 
+                $dato['tipo_pregunta'] == 'casillas'){
+
+                    usuarios_respuestas::create([
+                        'id_pregunta' => $dato['id_pregunta'],
+                        'id_opcion' => $dato['id_opcion'],
+                        'id_usuario' => $dato['id_usuario']
+                    ]);
+
+            }
+            if($dato['tipo_pregunta'] == 'respuestaCorta' ||
+            $dato['tipo_pregunta'] == 'respuestaLarga' ||
+            $dato['tipo_pregunta'] == 'buscador'){
+
+                usuarios_respuestas::create([
+                    'id_pregunta' => $dato['id_pregunta'],
+                    'respuesta_texto' => $dato['respuesta_texto'],
+                    'id_usuario' => $dato['id_usuario']
+                ]);
+
+            }
+        }
+
+        return response()->json('ok');
+
+    }
+
+    public function agradecimiento($id){
+
+        $encuesta = encuestas::where('id', '=', $id)->get();
+
+        return view('frontend.agradecimientos', compact('encuesta'));
 
     }
 }

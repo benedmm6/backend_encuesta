@@ -35,6 +35,8 @@ class EncuestasController extends Controller
                     ->where('encuestas.id', '=', $idEncuesta)
                     ->orderBy('opciones_respuestas.orden_opcion')->get();
 
+                    
+
         return view('dash.encuestas.indexPreguntas',compact('idEncuesta', 'encuesta','categorias','preguntas', 'opciones'));
     
     }

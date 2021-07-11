@@ -1,37 +1,66 @@
 @extends('layouts.sitio')
 
-@section('title',  $categoria->nombre_categoria )
+@section('title', 'Categoria | ' . $categoria->nombre_categoria)
 
 @section('navbar')
 
 @section('contenido')
 
-    @if ($categoria->id == 2)
+    @if ($categoria->id == '2')
 
-        <h2 class="display-4 fw-bold text-primary">Autoridades Municipales de Tabasco<span class="text-dark">.</span></h2>
-            
-        <p class="lead mb-5">Seleccione un municipios</p>
+        <div class="container">
 
-        <div class="row gx-5">
+            {{-- TITULO --}}
 
-            @foreach ($municipios as $municipio)
+            <div class="col-md-12 py-md-5">
 
-            <div class="col-md-2 py-4 ">
-                <a href="{{ route('home.encuesta.index',['categoria' => $categoria->id,'municipio' => $municipio->id]) }}" class="text-decoration-none">
-                  <img src="http://encuestas.test/storage/{{ $municipio->icono}}" class="img-fluid">
-                  <div class="d-flex">
-                  </div>
-                  <p class="lead text-dark">{{ $municipio->nombre_municipio }}</p>
-                </a>
+                <div class="mw-100 col-auto text-center">
+
+                    <div class="mx-auto align-self-center px-4 my-5">
+
+                        <h1 class="display-4 fw-bold mb-4 text-primary text-center">Selecciona tu Municipio</h1>
+
+                    </div>
+
+                </div>
+
             </div>
-                
-            @endforeach
+
+            {{-- END TITULO --}}
+
+            {{-- MUNICIPIOS --}}
+
+            <div class="row justify-content-around align-items-center py-md-5">
+
+                @foreach ($municipios as $municipio)
+
+                    <div class="col-md-2 py-md-5">
+
+                        <img src="{{ asset('storage/' . $municipio->icono) }}" class="img-fluid mx-auto d-block">
+
+                        <div class="mx-auto align-self-center my-3">
+
+                            <a href="{{ route('home.encuesta.index', ['categoria' => $categoria->id, 'encuesta' => $encuestas[0]->id, 'municipio' => $municipio->id]) }}"
+                                class="text-decoration-none">
+
+                                <p class="lead text-dark text-center">{{ $municipio->nombre_municipio }}</p>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                @endforeach
+
+            </div>
+
+            {{-- END MUNICIPIOS --}}
 
         </div>
-        
+
     @endif
 
-    
 @endsection
 
 @section('footer')

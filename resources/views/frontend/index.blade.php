@@ -1,119 +1,102 @@
-<?php 
+@extends('layouts.sitio')
+
+@section('title', 'SEDEC | Inicio')
+
+@section('navbar')
+
+@section('contenido')
+
+    @php
 
     $inicio = [
-        "titulo" => "Foro de consulta ciudadana",
-        "descripcion" => "El debate ciudadano y los foros de opinión son los mecanismos
-        de participación ciudadana de democracia interactiva, los cuales buscan abrir espacion
-        para expresión y manifestación de ideas de los especialistas, los consejos consultivos,
-        los OSCs y población en general, sobre los temas de relevancia y actualidad para el municipio"
-    ]                        
-                    
-?>
+        'titulo' => 'Primera Campaña de Opinión Ciudadana sobre Trámites Gubernamentales',
+        'descripcion' => "Bienvenido a la <strong>Primera Campaña de Opinión Ciudadana sobre Trámites Gubernamentales 
+            </strong>del Estado de Tabasco, con tu participación nos ayudarás a identificar los trámites que impactan en 
+        la población, por la complejidad de los mismos al momento de realizarlos, así como a combatir 
+        los posibles actos proclives de corrupción .
+",
+    ];
 
-<!doctype html>
+    @endphp
 
-<html lang="es">
+    <div class="container">
 
-<head>
+        {{-- SECCION INICIAL --}}
 
-    <meta charset="utf-8">
+        <section class="py-md-5">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <div class="col-md-12">
+    
+                <div class="mw-100 col-auto text-center">
+    
+                    <div class="mx-auto align-self-center px-4 my-5">
+    
+                        <h1 class="display-4 fw-bold mb-4 text-primary text-center">{{ $inicio['titulo'] }}</h1>
+    
+                        <p class="lead mb-4 text-center">{!! $inicio['descripcion'] !!}</p>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
-
-    <title>SEDEC | Home</title>
-</head>
-
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100" style="background-color: #9D2449;">
-
-        <div class="container">
-
-            <a class="navbar-brand fw-bold" href="#"><strong>tabasco</strong>.gob.mx</a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-
-                <i class="fas fa-bars lead text-dark"></i>
-
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item d-flex">
-
-                        <a class="nav-link align-self-center text-white" aria-current="page" href="#inicio">Inicio</a>
-
-                    </li>
-
-                    <li class="nav-item me-2">
-
-                        <a class="btn btn-light" href="{{ route('login') }}">Inicia sesión</a>
-
-                    </li>
-
-                </ul>
-
+                        <p class="lead mb-4 text-center">(Favor de dar click en el siguiente botón para comenzar el proceso)
+                        </p>
+    
+                        <a href="{{ route('home.usuarios.index') }}" class="btn btn-primary mb-5">Registrate</a>
+    
+                    </div>
+    
+                </div>
+            
             </div>
+    
+        </section>
+        
+        {{-- LOGOTIPOS --}}
 
-        </div>
+        <section class="py-md-5">
 
-    </nav>
-
-    <section id="hero" style="height: 900px;">
-
-        <div class="row g-0 h-100">
-
-            <div class="col-lg-6 d-flex">
-
-                <div class="content mx-auto align-self-center px-4 my-5">
-
-                    <h1 class="display-4 fw-bold mb-4 text-primary">{{ $inicio['titulo']}}</h1>
-
-                    <p class="lead mb-4">{{ $inicio['descripcion']}}</p>
-
-                    <a href="{{ route('registro') }}" class="btn btn-primary mb-5">Registrate</a>
-
+            <div class="m-0 row justify-content-center">
+            
+                <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
+    
+                    <div class="thumbnail">
+    
+                        <img src="{{ asset('storage/firmas/cemer.png') }}" style=" width: 90%;"class="rounded">
+    
+                    </div>
+    
+                </div>
+    
+                <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
+    
+                    <img src="{{ asset('storage/firmas/sedec_logo.png') }}" style=" width: 100%;" class="rounded">
+    
+                </div>
+    
+                <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
+    
+                    <img src="{{ asset('storage/firmas/logo-web.png') }}" style=" width: 100%;" class="rounded">
+    
+                </div>
+    
+                <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
+    
+                    <img src="{{ asset('storage/firmas/funcion-publica.png') }}" style=" width: 100%;" class="rounded">
+    
+                </div>
+    
+                <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
+    
+                    <img src="{{ asset('storage/firmas/saig2.png') }}" style=" width: 100%;" class="rounded">
+    
                 </div>
 
             </div>
 
-            <div class="col-lg-6 d-flex bg-light">
+        </section>
 
-                <div class="content mx-auto align-self-center px-4 my-5">
+        {{-- END LOGOTIPOS --}}
 
-                    <img src="phone.png" class="img-fluid">
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+    </div>
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
+@endsection
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-    </script>
-    <script src="https://kit.fontawesome.com/ffec4ec2ed.js" crossorigin="anonymous"></script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-        -->
-</body>
-
-</html>
+@section('footer')

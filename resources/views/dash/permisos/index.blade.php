@@ -57,9 +57,9 @@
                     
                     <h3 class="card-title">Lista de Permisos</h3>
 
-                    <div class="card-tools">
+                    {{-- <div class="card-tools">
                         <a class="btn btn-primary" href="{{route('admin.permisos.create')}}"><i class="fas fa-fw fa-plus"></i>Agregar un permiso</a>
-                    </div>
+                    </div> --}}
                 
                 </div>
 
