@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use Illuminate\Support\Facades\DB;
+
 class ParticipantesController extends Controller
 {
     /**
@@ -42,7 +44,25 @@ class ParticipantesController extends Controller
   
         User::create($request->all());
 
-        return redirect()->route('home.categorias')->with('info','Seleccione una categoria para empezar');
+        $session = DB::table('users')
+                    ->select('id','name','email','edad','estudio')
+                    ->where('email','=',$request->get('email'))->get();
+
+                    if (count($session)>0){
+            
+                        $request->session()->put('user_id',$session[0]->id);
+                        
+                        $request->session()->put('user_email',$session[0]->email);        
+                        
+                        $request->session()->all();
+            
+                        return redirect()->route('home.categorias');
+            
+                    }else{
+                        return redirect()->route('home.usuarios.index');
+                    }
+
+        
     }
 
     /**

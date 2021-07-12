@@ -237,8 +237,8 @@ return [
             'icon'        => 'fas fa-fw fa-home',
         ],
                 
-        ['header' => 'Usuarios',
-         'can' => 'usario-mang',
+        ['header' => 'Usuarios del sistema',
+         'can' => ['admin.usuarios.index', 'admin.roles.index', 'admin.permisos.index'],
         ],
         [          
             'text' => 'Administrar Usuarios',
@@ -263,7 +263,7 @@ return [
          'can' => ['admin.categorias.index',
          'admin.municipios.index',
          'admin.tramites.index'
-    ],
+        ],
         ],
         [
             'text' => 'Adminitrar Categorias',

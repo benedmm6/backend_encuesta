@@ -26,7 +26,7 @@ use App\Http\Controllers\HomeEncuestaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/inicio', function () {
+Route::get('/', function () {
     return view('frontend.index');
 })->name('home');
 

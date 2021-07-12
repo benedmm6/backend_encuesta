@@ -167,7 +167,7 @@
 
                                             <a href="{{ url("encuestas/{$encuesta->id}/preguntas") }}" class="btn btn-primary"><i class="fas fa-question"></i></a>
 
-                                            <a href="{{route('admin.encuestas.edit', $encuesta->id)}}"class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ route('admin.encuestas.edit', $encuesta->id) }}"class="btn btn-warning"><i class="fas fa-edit"></i></a>
 
                                             <button class="btn btn-danger btnEliminar" idEncuesta="{{ $encuesta->id }}"><i class="fas fa-trash-alt"></i></button>
 
@@ -221,9 +221,13 @@
         @endif
 
         $('.tablaEncuestas tbody').on('click', '.btnEliminar', function(){
+
                     var idEncuesta = $(this).attr("idEncuesta");
-                    let _url = `http://encuestas.test/encuestas/${idEncuesta}`;
+
+                    let _url = '{!! url("encuestas/'+idEncuesta+'") !!}';
+
                     let _token   = $('meta[name="csrf-token"]').attr('content');
+
                     Swal.fire({
                             title: '¿Está seguro de borrar la encuesta?',
                             text: '¡Si no lo está puede cancelar la acción!',
@@ -234,7 +238,6 @@
                             cancelButtonText: 'Cancelar',
                             confirmButtonText: 'Si, borrar la encuesta'
                         }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
                         if (result.value) {
                             $.ajax({
                                 url: _url,
@@ -258,7 +261,7 @@
 
             var estadoEncuesta = $(this).attr("estadoEncuesta");
 
-            let _url = "http://encuestas.test/encuestas/"+idEncuesta+"/estado";
+            let _url = '{!! url("encuestas/'+idEncuesta+'/estado") !!}';
 
             $.ajaxSetup({
                 headers: {
@@ -274,6 +277,7 @@
                 },
                 dataType: "json",
                 success: function(response){
+                    location.reload();
                     Toast.fire('El estado de la encuesta se actualizo correctamente', '', 'success');
                 }
                     

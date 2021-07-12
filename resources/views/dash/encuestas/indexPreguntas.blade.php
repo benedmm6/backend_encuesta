@@ -116,7 +116,7 @@
 
                 <div class="card-body">
 
-                    <button class="btn btn-success" data-toggle="modal" data-target="#preguntas">Agregar pregunta</button>
+                    <button class="btn btn-success"data-toggle="modal" data-target="#preguntas">Agregar pregunta</button>
 
                 </div>
 
@@ -211,7 +211,7 @@
                         <br>
                         
                         <div class="form-group">
-                            <button type="button" class="btn btn-danger btnBorrar" idPregunta="{{ $pregunta->id}}" >Borrar</button>
+                            <button url="{{ route('admin.encuestas.deletePreguntas', $pregunta->id) }}" type="submit" class="btn btn-danger btnBorrar" idPregunta="{{ $pregunta->id}}" >Borrar</button>
                         </div>
 
                 </div>
@@ -430,7 +430,10 @@
 
 @section('js')
 
+
     <script>
+
+        // CONFIGURACION DE SWEET ALERT
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -450,7 +453,9 @@
 
                 var idPregunta = $(this).attr("idPregunta");
 
-                let _url = `http://encuestas.test/encuestas/${idPregunta}/preguntas/delete`;
+                let _url = '{!! url("encuestas/'+idPregunta+'/preguntas/delete") !!}';
+
+                console.log(_url);
                 
                 let _token   = $('meta[name="csrf-token"]').attr('content');
 
@@ -470,7 +475,7 @@
                                     url: _url,
                                     type: 'DELETE',
                                     data: {
-                                    _token: _token
+                                    _token: _token,
                                     },
                                     success: function(response) {
 
@@ -574,7 +579,9 @@
 
                     var nombre_pregunta = $('#' + optionValue).val();
 
-                    let _url = "http://encuestas.test/encuestas/" + idEncuesta + "/preguntas/create";
+                    // let _url = "http://encuestas.test/encuestas/" + id + "/preguntas/create";
+
+                    let _url = "{{ url('encuestas/" + id + "/preguntas/create')}}";
 
                     if ($('#check_' + optionValue + ':checked').val()) {
                         var obligatoria = '1';
@@ -679,7 +686,7 @@
                                 location.reload();
 
                                 Toast.fire(
-                                    'La pregunta se agrego correctamente se agrego correctamente',
+                                    'La pregunta se agrego correctamente',
                                     '', 'success')
                             }
                         });
@@ -710,7 +717,7 @@
                                 location.reload();
 
                                 Toast.fire(
-                                    'La pregunta se agrego correctamente se agrego correctamente',
+                                    'La pregunta Se agrego correctamente',
                                     '', 'success')
                             }
                         });

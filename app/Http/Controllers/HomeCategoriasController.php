@@ -16,7 +16,6 @@ class HomeCategoriasController extends Controller
 {
     public function index(){
 
-        if(!empty(session('user_id'))){
 
             $categorias = categorias::all();
 
@@ -30,11 +29,9 @@ class HomeCategoriasController extends Controller
                                     ->whereRaw('CURDATE() BETWEEN date(created_at) AND date(fecha_vencimiento)')
                                     ->groupBy('id_categoria')->get();
 
-            return view('frontend.categorias', compact('categorias','encuestas', 'totalCategoria'));
+        return view('frontend.categorias', compact('categorias','encuestas', 'totalCategoria'));
 
-        }
-
-         return redirect()->route('home.usuarios.index');
+        return redirect()->route('home.usuarios.index');
 
     }
 
