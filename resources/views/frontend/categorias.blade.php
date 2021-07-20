@@ -19,6 +19,22 @@
 
                     <p class="lead mb-4 text-center">Selecciona el ámbito de gobierno del cual deseas opinar.</p>
 
+                    @if (session('error') == '0')
+
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            
+                            <strong>¡Ya participaste en esta encuesta!</strong> Intenta con las encuestas municipales.
+                            
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            
+                                <span aria-hidden="true">&times;</span>
+                            
+                            </button>
+                        
+                        </div>
+                        
+                    @endif
+
                 </div>
 
             </div>
@@ -33,8 +49,13 @@
 
                     <div class="col-md-6">
 
-                        <img src="{{ asset('storage/firmas/escudo_de_armas.png') }}" style="width:20%"
+                        <a href="{{ route('home.categorias.show', ['id' => $categoria->id]) }}" 
+                            class="text-decoration-none">
+
+                            <img src="{{ asset('storage/firmas/mapa_tabasco.png') }}" style="width:45%"
                             class="img-fluid mx-auto d-block">
+                        
+                        </a>
 
                         <div class="mx-auto align-self-center px-4 my-5">
 
@@ -57,38 +78,44 @@
 
                     <div class="col-md-6">
 
-                        <img src="{{ asset('storage/firmas/escudo_de_armas.png') }}" style="width:20%"
-                            class="img-fluid mx-auto d-block">
+                        @php
+                            $idEncuesta;
+                        @endphp
 
+                        @foreach ($encuestas as $key => $item)
+
+                            @if ($categoria->id == $item->id_categoria)
+
+                                @php
+                                    $idEncuesta = $key;
+                                @endphp
+
+                            @endif
+
+                        @endforeach
+
+                        <a class="text-decoration-none"
+                            href="{{ route('home.encuesta.index', ['categoria' => $categoria->id, 'encuesta' => $encuestas[$idEncuesta]->id, 'municipio']) }}">
+
+                            <img src="{{ asset('storage/firmas/escudo_de_armas.png') }}" style="width:20%"
+                                class="img-fluid mx-auto d-block">
+
+
+                        </a>
                         <div class="mx-auto align-self-center px-4 my-5">
 
                             <p class="lead text-primary fw-bold mb-4 text-center">{!! $categoria->nombre_categoria !!}</p>
 
-                            @php
-                                $idEncuesta;
-                            @endphp
 
-                            @foreach ($encuestas as $key => $item)
-
-                                @if ($categoria->id == $item->id_categoria)
-
-                                    @php
-                                        $idEncuesta = $key;
-                                    @endphp
-                                    
-                                @endif
-                                
-                            @endforeach
-
-                            <a href="{{ route('home.encuesta.index', ['categoria' => $categoria->id, 'encuesta' => $encuestas[$idEncuesta]->id, 'municipio']) }}" 
-                            class="text-decoration-none">
+                            <a href="{{ route('home.encuesta.index', ['categoria' => $categoria->id, 'encuesta' => $encuestas[$idEncuesta]->id]) }}"
+                                class="text-decoration-none">
 
                                 <p class="text-secondary fw-bold text-center">
-                                    
-                                    Participar 
-                                    
+
+                                    Participar
+
                                     <i class="fas fa-arrow-right ms-2"></i>
-                                        
+
                                 </p>
 
                             </a>

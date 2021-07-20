@@ -17,17 +17,17 @@ class CreateEncuestasTable extends Migration
             
             $table->id();
             
-            $table->string('nombre_encuesta');
+            $table->text('nombre_encuesta');
             
             $table->enum('estado',[0,1])->default(1);
 
             $table->dateTime('fecha_vencimiento', $precision = 0);
 
-            $table->string('descripcion_encuesta')->nullable();
+            $table->text('descripcion_encuesta')->nullable();
 
-            $table->string('instrucciones_encuesta')->nullable();
+            $table->text('instrucciones_encuesta')->nullable();
 
-            $table->string('agradecimiento_encuesta')->nullable();
+            $table->text('agradecimiento_encuesta')->nullable();
 
             $table->unsignedBigInteger('id_categoria');
 

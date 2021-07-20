@@ -27,7 +27,7 @@ class CreatePreguntasTable extends Migration
             
             $table->enum('busqueda', [0,1])->default(0);
             
-            $table->enum('tipo_busqueda', [0,1]);
+            $table->integer('tipo_busqueda');
 
             $table->unsignedBigInteger('id_encuesta');
 

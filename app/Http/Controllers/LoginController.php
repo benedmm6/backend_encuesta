@@ -43,19 +43,17 @@ class LoginController extends Controller
                     ->select('id','name','email','edad','estudio')
                     ->where('email','=',$email)->get();
 
-        if (count($session)>0){
+        if (count($session) > 0){
             
             $request->session()->put('user_id',$session[0]->id);
             
             $request->session()->put('user_email',$session[0]->email);        
-            
-            $request->session()->all();
 
             return redirect()->route('home.categorias');
 
         }else{
         
-            return ('El usuario no esta registrado o el email es incorrecto');
+            return redirect()->route('loginu.index')->with('error','0');
         
         }
     }
@@ -110,6 +108,8 @@ class LoginController extends Controller
         $request->session()->forget('user_id');
         
         $request->session()->forget('user_email');
+
+        $request->session()->regenerate();
 
         return redirect()->route('home.usuarios.index');
 

@@ -22,7 +22,7 @@ class UsuariosController extends Controller
     }
     public function index()
     {
-        $usuarios= User::all();
+        $usuarios = User::all();
   
         return view('dash.usuarios.indexUsuarios', compact('usuarios'));
     }
@@ -49,7 +49,7 @@ class UsuariosController extends Controller
     {
         //
         $validated = $request->validate([
-            'name' => 'required|unique:usuarios'
+            'name' => 'required|unique:users'
         ]);        
   
       User::create($request->all());

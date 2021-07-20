@@ -31,7 +31,6 @@ class HomeCategoriasController extends Controller
 
         return view('frontend.categorias', compact('categorias','encuestas', 'totalCategoria'));
 
-        return redirect()->route('home.usuarios.index');
 
     }
 

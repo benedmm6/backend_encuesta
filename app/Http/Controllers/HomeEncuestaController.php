@@ -12,6 +12,8 @@ use App\Models\opciones_respuestas;
 
 use App\Models\usuarios_respuestas;
 
+use App\Models\usuarios_encuestas;
+
 use App\Models\tramites;
 
 
@@ -25,34 +27,57 @@ class HomeEncuestaController extends Controller
 
         $idCategoria = $categoria;
 
-        $preguntas = preguntas::select('preguntas.*')
-                    ->join('encuestas', 'preguntas.id_encuesta', '=', 'encuestas.id')
-                    ->where('preguntas.id_encuesta', '=', $idEncuesta)
-                    ->orderBy('preguntas.id')->get();
-
-        $encuesta = encuestas::find($idEncuesta);
-
-        $opciones = opciones_respuestas::select('opciones_respuestas.*')
-                    ->join('preguntas', 'opciones_respuestas.id_pregunta', '=', 'preguntas.id')
-                    ->join('encuestas', 'preguntas.id_encuesta', '=', 'encuestas.id')
-                    ->where('encuestas.id', '=', $idEncuesta)
-                    ->orderBy('opciones_respuestas.orden_opcion')->get();
+        $idUsuario = session('user_id');
 
         if($municipio == null){
 
             $tramites = tramites::where('id_categoria', '=', $idCategoria)
                             ->orderBy('nombre_tramite','asc')->get();
-            
+
+            $contestado = usuarios_encuestas::where('id_usuario', '=', $idUsuario)
+                                            ->where('id_encuesta', '=', $idEncuesta)->get();
+
         }else{
 
             $tramites = tramites::where('id_categoria', '=', $idCategoria)
                             ->where('id_municipio', '=', $idMunicipio)
                             ->orderBy('nombre_tramite','asc')->get();
 
+            $contestado = usuarios_encuestas::where('id_usuario', '=', $idUsuario)
+                                            ->where('id_encuesta', '=', $idEncuesta)
+                                            ->where('id_municipio', '=', $idMunicipio)->get();
+
         }
 
-        return view('frontend.homeEncuesta', compact('preguntas','encuesta','opciones','tramites'));
+        if(count($contestado) > 0){
 
+            if($municipio != null){
+
+                return redirect()->route('home.categorias.show',['id' => 2])->with('error','0');
+
+            }else{
+
+                return redirect()->route('home.categorias')->with('error','0');
+
+            }
+
+        }else{
+
+            $preguntas = preguntas::select('preguntas.*')
+                        ->join('encuestas', 'preguntas.id_encuesta', '=', 'encuestas.id')
+                        ->where('preguntas.id_encuesta', '=', $idEncuesta)
+                        ->orderBy('preguntas.id')->get();
+
+            $encuesta = encuestas::find($idEncuesta);
+
+            $opciones = opciones_respuestas::select('opciones_respuestas.*')
+                        ->join('preguntas', 'opciones_respuestas.id_pregunta', '=', 'preguntas.id')
+                        ->join('encuestas', 'preguntas.id_encuesta', '=', 'encuestas.id')
+                        ->where('encuestas.id', '=', $idEncuesta)
+                        ->orderBy('opciones_respuestas.orden_opcion')->get();
+
+            return view('frontend.homeEncuesta', compact('preguntas','encuesta','opciones','tramites','idEncuesta','idMunicipio','contestado','idUsuario'));
+        }
     }
 
     public function showEncuesta($categoria, $municipio){
@@ -98,6 +123,12 @@ class HomeEncuestaController extends Controller
             }
         }
 
+        usuarios_encuestas::create([
+            'id_usuario' => $datos['idUsuario'],
+            'id_encuesta' => $datos['idEncuesta'],
+            'id_municipio' => $datos['idMunicipio']
+        ]);
+
         return response()->json('ok');
 
     }
@@ -106,7 +137,20 @@ class HomeEncuestaController extends Controller
 
         $encuesta = encuestas::where('id', '=', $id)->get();
 
-        return view('frontend.agradecimientos', compact('encuesta'));
+        if($encuesta[0]->id_categoria == 2){
+
+            $encuestas = encuestas::where('id_categoria','=', '1')
+                                    ->where('estado', '=', '1' )->get();
+            
+        }else{
+
+            $encuestas = encuestas::where('id_categoria','=', '2')
+                                    ->where('estado', '=', '1' )->get();
+
+        }
+
+        return view('frontend.agradecimientos', compact('encuesta','encuestas'));
 
     }
 }
+

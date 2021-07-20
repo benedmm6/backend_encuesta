@@ -35,15 +35,16 @@
 
                     {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'ejemplo@correo.gmail.com']) !!}
 
-                    @error('email')
+                    @if (session('error') == '0')
 
-                        <small class="text-danger">
+                    <small class="text-danger">
 
-                            {{ $message }}
+                        El usuario no esta registrado
 
-                        </small>
+                    </small>
 
-                    @enderror
+                        
+                    @endif
 
                 </div>
 

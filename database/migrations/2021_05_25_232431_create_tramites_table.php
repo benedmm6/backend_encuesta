@@ -16,11 +16,11 @@ class CreateTramitesTable extends Migration
         Schema::create('tramites', function (Blueprint $table) {
             $table->id();
             
-            $table->string('nombre_tramite');
+            $table->text('nombre_tramite');
             
-            $table->string('descripcion_tramite')->nullable();
+            $table->text('descripcion_tramite')->nullable();
             
-            $table->string('descripcion_corta')->nullable();
+            $table->text('descripcion_corta')->nullable();
 
             $table->unsignedBigInteger('id_categoria');
 

@@ -235,8 +235,7 @@ return [
             'text'        => 'Inicio',
             'url'         => 'dash',
             'icon'        => 'fas fa-fw fa-home',
-        ],
-                
+        ],                
         ['header' => 'Usuarios del sistema',
          'can' => ['admin.usuarios.index', 'admin.roles.index', 'admin.permisos.index'],
         ],

@@ -581,7 +581,7 @@
 
                     // let _url = "http://encuestas.test/encuestas/" + id + "/preguntas/create";
 
-                    let _url = "{{ url('encuestas/" + id + "/preguntas/create')}}";
+                    let _url = "{!! url('encuestas/" + id + "/preguntas/create')!!}";
 
                     if ($('#check_' + optionValue + ':checked').val()) {
                         var obligatoria = '1';
