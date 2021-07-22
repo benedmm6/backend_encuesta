@@ -17,17 +17,17 @@ class CreatePreguntasTable extends Migration
             
             $table->id();
             
-            $table->string('nombre_pregunta');
+            $table->string('nombre_pregunta')->nullable();
             
             $table->enum('obligatoria', [0,1])->default(0);
             
             $table->string('tipo_pregunta');
             
-            $table->integer('orden_pregunta');
+            $table->integer('orden_pregunta')->nullable();
             
             $table->enum('busqueda', [0,1])->default(0);
             
-            $table->integer('tipo_busqueda');
+            $table->integer('tipo_busqueda')->nullable();
 
             $table->unsignedBigInteger('id_encuesta');
 

@@ -18,7 +18,7 @@ class CreateMunicipiosTable extends Migration
 
             $table->string('nombre_municipio');
 
-            $table->string('icono');
+            $table->string('icono')->nullable();
             
             $table->timestamps();
         });

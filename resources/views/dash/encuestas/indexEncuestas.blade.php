@@ -35,60 +35,6 @@
 
     <div class="row">
         
-        <div class="col-md-12">
-
-            <div id="accordion">
-                <div class="card card-primary">
-                  <div class="card-header">
-                    <h4 class="card-title w-100">                        
-                        <a class="d-block w-100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <i class="fas fa-filter"></i>Filtros de busqueda
-                        </a>
-                    </h4>
-                  </div>
-              
-                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    
-                    <div class="card-body">
-                      {!! Form::open(['route' => 'admin.encuestas.index','method' => 'GET']) !!}
-
-                      <div class="form-group col-md-6">
-                            {!! Form::label('nombre', 'Nombre de la encuestas') !!}
-                            {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre de la encuesta']) !!}
-                      </div>
-
-                      <div class="form-group col-md-6">
-
-                        {!! Form::label('categoria', 'Categoria') !!}
-
-                        {!! Form::select('id_categoria', $categorias, null, ['class' =>'form-control','placeholder' => 'Selecciona una categoria']); !!}
-
-                    </div>
-
-                    <div class="form-group col-md-6">
-
-                        {!! Form::label('estado', 'Estado') !!}
-
-                        {!! Form::select('estado', ['0' => 'Borrador', '1' => 'Publicado'], null, ['class' =>'form-control', 'placeholder' => 'Selecciona un estado']); !!}
-
-                    </div>
-
-                    </div>
-
-                    <div class="card-footer">
-                        {!! Form::submit('Buscar', ['class' => 'btn btn-primary']) !!}
-                        {{ Form::close() }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-        
-        </div>
-    
-    </div>
-
-    <div class="row">
-        
         <div class="col-12">
 
             <div class="card">
@@ -163,7 +109,7 @@
                                     
                                         <div class="btn-group">
                                     
-                                            <button class="btn btn-default"><i class="fas fa-eye"></i></button>
+                                            {{-- <button class="btn btn-default"><i class="fas fa-eye"></i></button> --}}
 
                                             <a href="{{ url("encuestas/{$encuesta->id}/preguntas") }}" class="btn btn-primary"><i class="fas fa-question"></i></a>
 

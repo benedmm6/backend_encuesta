@@ -4,14 +4,6 @@
 
 @section('content_header')
 
-       @if (session('info'))
-       <div class="aler alert-succes">
-           <strong>{{session('info')}}</strong>
-       </div>
-           
-       @endif
-
-
     <div class="container-fluid">
         
         <div class="row mb-2">

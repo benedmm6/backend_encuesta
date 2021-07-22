@@ -86,5 +86,8 @@ class RoleSeeder extends Seeder
         $permiso29=Permission::create(['name'=>'admin.permisos.destroy',
                                         'description'=>'Eliminar permiso'])->assignRole($role1);
 
+        $root= User::Create(['name'=>'root',
+                             'email'=>'root@admin.com',
+                              'password'=>bcrypt('root1234')])->assignRole($role1);
     }
 }

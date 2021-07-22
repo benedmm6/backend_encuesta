@@ -22,9 +22,12 @@ class UsuariosController extends Controller
     }
     public function index()
     {
-        $usuarios = User::all();
+        // $usuarios = User::all();
+
+        $usuarios = User::where('password', '!=', 'null')->get();
   
         return view('dash.usuarios.indexUsuarios', compact('usuarios'));
+        
     }
 
     /**
@@ -47,15 +50,20 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $validated = $request->validate([
-            'name' => 'required|unique:users'
-        ]);        
-  
-      User::create($request->all());
-
       
-       
+        $validated = $request->validate([
+            'name' => 'required',
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+
+        $usuario= User::create([
+            'name' => $request['name'],
+            'email'=>$request['email'],
+            'password'=>bcrypt($request['password']),]
+        );
+        
+        $usuario->roles()->sync($request->roles);
 
         return redirect()->route('admin.usuarios.index')->with('info','El usuario se agrego correctamente');
     }
@@ -93,8 +101,8 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, User $usuario)
     {
-        //
         $usuario->roles()->sync($request->roles);
+
         return redirect()->route('admin.usuarios.edit',$usuario)->with('info','Se asigno un rol correctamente');
     }
 
@@ -104,8 +112,10 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $usuario)
     {
-        //
+        $usuario->delete();
+
+        return redirect()->route('admin.usuarios.index')->with('info','El usuario se elimino correctamente');
     }
 }

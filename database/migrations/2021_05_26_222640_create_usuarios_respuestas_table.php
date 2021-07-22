@@ -23,7 +23,7 @@ class CreateUsuariosRespuestasTable extends Migration
             
             $table->unsignedBigInteger('id_pregunta');
             
-            $table->unsignedBigInteger('id_opcion');
+            $table->unsignedBigInteger('id_opcion')->nullable();
             
             $table->foreign('id_usuario')->references('id')->on('users')->onDelete('cascade');
             
