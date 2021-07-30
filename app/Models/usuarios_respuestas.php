@@ -9,6 +9,6 @@ class usuarios_respuestas extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_pregunta','id_opcion','id_usuario','respuesta_texto'];
+    protected $fillable = ['pregunta','id_participante','respuesta_texto'];
 
 }

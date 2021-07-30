@@ -276,25 +276,39 @@ return [
             'icon' => 'fas fa-fw fa-map-pin',
             'can'  =>  'admin.municipios.index',
         ],
-        [
-            'text' => 'Administrar Trámites',
-            'route' => 'admin.tramites.index',
-            'icon' => 'fas fa-fw fa-file-alt',
-            'can'  =>  'admin.tramites.index'
-        ], 
+        // [
+        //     'text' => 'Administrar Trámites',
+        //     'route' => 'admin.tramites.index',
+        //     'icon' => 'fas fa-fw fa-file-alt',
+        //     'can'  =>  'admin.tramites.index'
+        // ], 
         ['header' => 'Encuestas'],
+        // [
+        //     'text' => 'Administrar encuestas',
+        //     'route' => 'admin.encuestas.index',
+        //     'icon' => 'fas fa-fw fa-file-signature',
+        //     'can' => 'admin.encuestas.index'
+        // ],
+        // [
+        //     'text' => 'Crear encuesta',
+        //     'route' => 'admin.encuestas.create',
+        //     'icon' => 'fas fa-fw fa-file-medical',
+        //     'can' => 'admin.encuestas.index'
+        // ],
         [
-            'text' => 'Administrar encuestas',
-            'route' => 'admin.encuestas.index',
-            'icon' => 'fas fa-fw fa-file-signature',
-            'can' => 'admin.encuestas.index'
-        ],
-        [
-            'text' => 'Crear encuesta',
-            'route' => 'admin.encuestas.create',
-            'icon' => 'fas fa-fw fa-file-medical',
-            'can' => 'admin.encuestas.index'
-        ],
+            'text'    => 'Reportes',
+            'icon'    => 'fas fa-fw fa-file-medical',
+            'submenu' => [
+                [
+                    'text' => 'Encuesta estatal',
+                    'route'  => 'admin.reporte.estatal',
+                ],
+                [
+                    'text' => 'Encuesta Municipal',
+                    'route'  => 'admin.reporte.municipal',
+                ],
+            ],
+        ]
     ],
 
     /*
@@ -368,7 +382,7 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

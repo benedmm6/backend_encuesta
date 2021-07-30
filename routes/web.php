@@ -9,6 +9,7 @@ use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\TramitesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\ReportesController;
 
 
 use App\Http\Controllers\LoginController;
@@ -65,31 +66,22 @@ Route::middleware(['auth:sanctum', 'verified'])->get('dash', function () {
 // RUTA CRUD PARA LOS USUARIOS
 Route::resource('usuarios', UsuariosController::class)->names('admin.usuarios');
 
-// RUTA CRUD PARA LAS ENCUESTAS
-
-Route::delete('encuestas/{id}/preguntas/delete', [EncuestasController::class, 'destroyPregunta'])->name('admin.encuestas.deletePreguntas');
-
-Route::post('encuestas/{id}/preguntas/create', [EncuestasController::class, 'storePreguntas'])->name('admin.encuestas.storePreguntas');
-
-Route::get('encuestas/{id}/preguntas', [EncuestasController::class, 'indexPreguntas'])->name('admin.encuestas.indexPreguntas');
-
-Route::post('encuestas/{id}/estado', [EncuestasController::class, 'updateEstado'])->name('admin.encuestas.updateEstado');
-
-Route::middleware(['auth:sanctum', 'verified'])->resource('encuestas', EncuestasController::class)->names('admin.encuestas');
-
-
 // RUTA CRUD PARA LAS CATEGORIAS
 Route::middleware(['auth:sanctum', 'verified'])->resource('admin/categorias', CategoriasController::class)->names('admin.categorias');
 
 // RUTA CRUD PARA LOS MUNICIPIOS
 Route::resource('municipios', MunicipiosController::class)->names('admin.municipios');
 
-// RUTA CRUD PARA LOS TRAMITES
-Route::resource('tramites', TramitesController::class)->names('admin.tramites');
-
 // RUTA CRUD PARA LOS ROLES
 Route::resource('roles', RolesController::class)->names('admin.roles');
 
 // RUTA CRUD PARA LOS PERMISOS
 Route::resource('permisos', PermisosController::class)->names('admin.permisos');
+
+// REPORTES
+Route::resource('reportes', ReportesController::class)->names('admin.reporte');
+
+Route::get('reporte/estatal', [ReportesController::class, 'indexEstatal'])->name('admin.reporte.estatal');
+
+Route::get('reporte/municipal', [ReportesController::class, 'indexMunicipal'])->name('admin.reporte.municipal');
 
