@@ -287,7 +287,13 @@
     </div>
 @stop
 
+
+
 @php
+
+$valor1 = 0;
+
+$valor2= 0;
 
     if(isset($pregunta2[0]->total)){
         $valor1 = $pregunta2[0]->total;
@@ -310,7 +316,7 @@
 
         let valor1 = '{!! $valor1 !!}';
 
-        let valor2 = '{!! $valor2 !!}';
+        let valor2 = '{{ $valor2 }}';
 
 
         var myChart = new Chart(ctx, {

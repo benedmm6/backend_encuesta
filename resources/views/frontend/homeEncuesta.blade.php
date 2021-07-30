@@ -84,7 +84,7 @@
                 
                 <label class="form-label">Grado de estudios</label>
 
-                <select name="estudi" id="estudio" class="form-select">
+                <select name="estudio" id="estudio" class="form-select">
 
                     <option value="0"> Seleccione una opción</option>
                     <option value="secunadria">Primaria</option>
@@ -108,7 +108,7 @@
                 <div class="row">
                     <div class="col-md-6">
 
-                        <label for="" class="form-label">¿Qué Tramites considera más Engorroso?</label>
+                        <label for="" class="form-label">¿Qué trámites considera más engorrosos?</label>
 
                     </div>
                     <div class="col-md-6">
@@ -147,7 +147,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <select name="porque2" id="porque" class="form-select">
+                        <select name="porque2" id="porque2" class="form-select">
                             <option  value="0">Selecciona una opción</option>
                             <option idPregunta="5" value="Demasiados requisitos">Demasiados requisitos</option>
                             <option idPregunta="5" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <select name="porque3" id="porque" class="form-select">
+                        <select name="porque3" id="porque3" class="form-select">
                             <option  value="0">Selecciona una opción</option>
                             <option idPregunta="6" value="Demasiados requisitos">Demasiados requisitos</option>
                             <option idPregunta="6" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
@@ -366,8 +366,6 @@
         // BTN
         $(document).ready(function() {
 
-            $('.buscador-ejemplo1').select2();
-
             $('.enviar').click(function() {
 
                 let campo = 'needs-validation';
@@ -418,8 +416,9 @@
                         },
                         dataType: "json",
                         success: function(response) {   
-                            console.log(response);                     
-                           location.href = "{{ route('home.encuesta.agradecimiento', [($id = $idCategoria )]) }}";
+                            console.log(response); 
+
+                           location.href = "{{ route('home.encuesta.agradecimiento', [$id = $idCategoria]) }}";
                                 
 
                         }

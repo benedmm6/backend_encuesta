@@ -27,17 +27,17 @@ class ReportesController extends Controller
                                                 ->where('id_categoria','=','1')
                                                 ->groupBy('id_participante')->get();
 
-        $pregunta1A= usuarios_respuestas::select('nombre','correo','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "5") AS opcional') )
+        $pregunta1A= usuarios_respuestas::select('nombre','email','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "5" AND id_participante = participantes.id) AS opcional') )
         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
         ->where('pregunta','=','2')
         ->where('id_categoria','=','1');
 
-        $pregunta1B=usuarios_respuestas::select('nombre','correo','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "6") AS opcional') )
+        $pregunta1B=usuarios_respuestas::select('nombre','email','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "6" AND id_participante = participantes.id) AS opcional') )
                                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                                         ->where('pregunta','=','3')
                                         ->where('id_categoria','=','1');
 
-        $pregunta1 = usuarios_respuestas::select('nombre','correo','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "4") AS opcional') )
+        $pregunta1 = usuarios_respuestas::select('nombre','email','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "4" AND id_participante = participantes.id) AS opcional') )
                                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                                         ->where('pregunta','=','1')
                                         ->where('id_categoria','=','1')
@@ -45,7 +45,7 @@ class ReportesController extends Controller
                                         ->union($pregunta1B)
                                         ->get();
 
-        $pregunta3 = usuarios_respuestas::select('nombre','correo','id_participante')
+        $pregunta3 = usuarios_respuestas::select('nombre','email','id_participante')
                                         ->join('participantes','participantes.id', '=', 'usuarios_respuestas.id_participante')
                                         ->where('id_categoria','=','1')
                                         ->whereIn('pregunta', [8,9,10,11,12])->get()
@@ -55,12 +55,12 @@ class ReportesController extends Controller
                                         ->where('id_categoria','=','1')
                                         ->whereIn('pregunta', [8,9,10,11,12])->get();
 
-        $pregunta4 = usuarios_respuestas::select('nombre','correo','respuesta_texto')
+        $pregunta4 = usuarios_respuestas::select('nombre','email','respuesta_texto')
                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                         ->where('pregunta','=','13')
                         ->where('id_categoria','=','1')->get();
 
-        $pregunta5 = usuarios_respuestas::select('nombre','correo','respuesta_texto')
+        $pregunta5 = usuarios_respuestas::select('nombre','email','respuesta_texto')
                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                         ->where('pregunta','=','14')
                         ->where('id_categoria','=','1')->get();
@@ -84,17 +84,17 @@ class ReportesController extends Controller
                                                 ->where('id_categoria','=','2')
                                                 ->groupBy('id_participante')->get();
 
-          $pregunta1A= usuarios_respuestas::select('nombre','correo','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "5") AS opcional') )
+          $pregunta1A= usuarios_respuestas::select('nombre','email','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "5" AND id_participante = participantes.id) AS opcional') )
                                             ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                                             ->where('pregunta','=','2')
                                             ->where('id_categoria','=','2');
 
-        $pregunta1B=usuarios_respuestas::select('nombre','correo','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "6") AS opcional') )
+        $pregunta1B=usuarios_respuestas::select('nombre','email','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "6" AND id_participante = participantes.id) AS opcional') )
                                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                                         ->where('pregunta','=','3')
                                         ->where('id_categoria','=','2');
 
-        $pregunta1 = usuarios_respuestas::select('nombre','correo','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "4") AS opcional') )
+        $pregunta1 = usuarios_respuestas::select('nombre','email','respuesta_texto',DB::raw('(SELECT respuesta_texto FROM usuarios_respuestas  WHERE pregunta = "4" AND id_participante = participantes.id) AS opcional') )
                                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                                         ->where('pregunta','=','1')
                                         ->where('id_categoria','=','2')
@@ -102,7 +102,7 @@ class ReportesController extends Controller
                                         ->union($pregunta1B)
                                         ->get();
 
-                                        $pregunta3 = usuarios_respuestas::select('nombre','correo','id_participante')
+                                        $pregunta3 = usuarios_respuestas::select('nombre','email','id_participante')
                                         ->join('participantes','participantes.id', '=', 'usuarios_respuestas.id_participante')
                                         ->where('id_categoria','=','2')
                                         ->whereIn('pregunta', [8,9,10,11,12])->get()
@@ -112,12 +112,12 @@ class ReportesController extends Controller
                                         ->where('id_categoria','=','2')
                                         ->whereIn('pregunta', [8,9,10,11,12])->get();
 
-        $pregunta4 = usuarios_respuestas::select('nombre','correo','respuesta_texto')
+        $pregunta4 = usuarios_respuestas::select('nombre','email','respuesta_texto')
                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                         ->where('pregunta','=','13')
                         ->where('id_categoria','=','2')->get();
 
-        $pregunta5 = usuarios_respuestas::select('nombre','correo','respuesta_texto')
+        $pregunta5 = usuarios_respuestas::select('nombre','email','respuesta_texto')
                         ->join('participantes','usuarios_respuestas.id_participante', '=', 'participantes.id')
                         ->where('pregunta','=','14')
                         ->where('id_categoria','=','2')->get();
