@@ -38,7 +38,7 @@
                         <p class="lead mb-4 text-center">(Favor de dar click en el siguiente botón para comenzar el proceso)
                         </p>
     
-                        <a href="{{ route('home.usuarios.index') }}" class="btn btn-primary mb-5">Registrate</a>
+                        <a href="{{ route('home.categorias') }}" class="btn btn-primary mb-5">Encuestas</a>
     
                     </div>
     

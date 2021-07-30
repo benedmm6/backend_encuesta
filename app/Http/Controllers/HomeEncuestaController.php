@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categorias;
 use Illuminate\Http\Request;
 
 use App\Models\encuestas;
@@ -9,19 +10,18 @@ use App\Models\encuestas;
 use App\Models\preguntas;
 
 use App\Models\opciones_respuestas;
-
+use App\Models\participantes;
 use App\Models\usuarios_respuestas;
 
-use App\Models\usuarios_encuestas;
 
 use App\Models\tramites;
-
+use Illuminate\Support\Facades\DB;
 
 class HomeEncuestaController extends Controller
 {
-    public function homeEncuesta($categoria,$encuesta, $municipio = null){
+    public function homeEncuesta($categoria, $municipio = null){
 
-        $idEncuesta = $encuesta;
+     
 
         $idMunicipio = $municipio;
 
@@ -34,8 +34,7 @@ class HomeEncuestaController extends Controller
             $tramites = tramites::where('id_categoria', '=', $idCategoria)
                             ->orderBy('nombre_tramite','asc')->get();
 
-            $contestado = usuarios_encuestas::where('id_usuario', '=', $idUsuario)
-                                            ->where('id_encuesta', '=', $idEncuesta)->get();
+           
 
         }else{
 
@@ -43,41 +42,13 @@ class HomeEncuestaController extends Controller
                             ->where('id_municipio', '=', $idMunicipio)
                             ->orderBy('nombre_tramite','asc')->get();
 
-            $contestado = usuarios_encuestas::where('id_usuario', '=', $idUsuario)
-                                            ->where('id_encuesta', '=', $idEncuesta)
-                                            ->where('id_municipio', '=', $idMunicipio)->get();
+           
+        }     
 
-        }
 
-        if(count($contestado) > 0){
 
-            if($municipio != null){
-
-                return redirect()->route('home.categorias.show',['id' => 2])->with('error','0');
-
-            }else{
-
-                return redirect()->route('home.categorias')->with('error','0');
-
-            }
-
-        }else{
-
-            $preguntas = preguntas::select('preguntas.*')
-                        ->join('encuestas', 'preguntas.id_encuesta', '=', 'encuestas.id')
-                        ->where('preguntas.id_encuesta', '=', $idEncuesta)
-                        ->orderBy('preguntas.id')->get();
-
-            $encuesta = encuestas::find($idEncuesta);
-
-            $opciones = opciones_respuestas::select('opciones_respuestas.*')
-                        ->join('preguntas', 'opciones_respuestas.id_pregunta', '=', 'preguntas.id')
-                        ->join('encuestas', 'preguntas.id_encuesta', '=', 'encuestas.id')
-                        ->where('encuestas.id', '=', $idEncuesta)
-                        ->orderBy('opciones_respuestas.orden_opcion')->get();
-
-            return view('frontend.homeEncuesta', compact('preguntas','encuesta','opciones','tramites','idEncuesta','idMunicipio','contestado','idUsuario'));
-        }
+            return view('frontend.homeEncuesta', compact('tramites','idCategoria','idMunicipio','idUsuario'));
+   
     }
 
     public function showEncuesta($categoria, $municipio){
@@ -86,48 +57,57 @@ class HomeEncuestaController extends Controller
 
         $idMunicipio = $municipio;
 
-        $encuestas = encuestas::where('encuestas.id_categoria', '=', $categoria)
-                                ->where('encuestas.estado', '=', '1' )->get();
+       
 
-        return view('frontend.showEncuestas', compact('encuestas','idCategoria','idMunicipio'));
+        return view('frontend.showEncuestas', compact('idCategoria','idMunicipio'));
 
     }
 
     public function storeRespuesta(Request $request){
 
-        $datos = $request->all();
+       $datos = $request->all();
+        participantes::create([
+            'nombre'=>$datos['nombreu'],
+            'email' => $datos['email'],
+            'edad' => $datos['edad'],
+            'estudio' => $datos['estudio']
+        ]);            
+     
+        $idparticipante=  DB::table('participantes')
+        ->select('id')
+        ->where('email','=', $datos['email'])
+        ->first()
+        ->id;
+        $idCategoria=DB::table('categorias')
+        ->select('id')
+        ->where('id','=', $datos['idCategoria'])
+        ->first()
+        ->id;
 
+        
         foreach ($datos['data'] as $dato) {
-            // echo $dato['id_pregunta'];
-
-            if($dato['tipo_pregunta'] == 'variasOpciones' || 
-                $dato['tipo_pregunta'] == 'casillas'){
-
-                    usuarios_respuestas::create([
-                        'id_pregunta' => $dato['id_pregunta'],
-                        'id_opcion' => $dato['id_opcion'],
-                        'id_usuario' => $dato['id_usuario']
-                    ]);
-
-            }
-            if($dato['tipo_pregunta'] == 'respuestaCorta' ||
-            $dato['tipo_pregunta'] == 'respuestaLarga' ||
-            $dato['tipo_pregunta'] == 'buscador'){
-
-                usuarios_respuestas::create([
-                    'id_pregunta' => $dato['id_pregunta'],
+             //echo $dato['idpregunta'];
+            // echo $dato;
+            if($request['idMunicipio']!=null){        
+                  usuarios_respuestas::create([
+                    'pregunta' => $dato['idPregunta'],
                     'respuesta_texto' => $dato['respuesta_texto'],
-                    'id_usuario' => $dato['id_usuario']
-                ]);
-
-            }
+                    'id_participante' => $idparticipante,
+                    'id_categoria'=> $idCategoria,
+                    'id_municipio'=>$request['idMunicipio']
+                ]);       
+            }else{
+                usuarios_respuestas::create([
+                    'pregunta' => $dato['idPregunta'],
+                    'respuesta_texto' => $dato['respuesta_texto'],
+                    'id_participante' => $idparticipante,
+                    'id_categoria'=> $idCategoria,                    
+                ]);             
+            } 
+                       
         }
-
-        usuarios_encuestas::create([
-            'id_usuario' => $datos['idUsuario'],
-            'id_encuesta' => $datos['idEncuesta'],
-            'id_municipio' => $datos['idMunicipio']
-        ]);
+        
+        
 
         return response()->json('ok');
 
@@ -135,21 +115,24 @@ class HomeEncuestaController extends Controller
 
     public function agradecimiento($id){
 
-        $encuesta = encuestas::where('id', '=', $id)->get();
+        $idCategoria = $id;
 
-        if($encuesta[0]->id_categoria == 2){
+        $encuesta = encuestas::where('id', '=', $id)->get();       
 
-            $encuestas = encuestas::where('id_categoria','=', '1')
-                                    ->where('estado', '=', '1' )->get();
+        if($id== 2){
+
+            $encuestas = categorias::where('id','=', '1')
+                                     ->get();
             
         }else{
 
-            $encuestas = encuestas::where('id_categoria','=', '2')
-                                    ->where('estado', '=', '1' )->get();
+            $encuestas = categorias::where('id','=', '2')
+                                     ->get();
 
         }
 
-        return view('frontend.agradecimientos', compact('encuesta','encuestas'));
+
+        return view('frontend.agradecimientos', compact('encuestas','idCategoria'));
 
     }
 }

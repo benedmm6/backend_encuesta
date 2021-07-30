@@ -82,20 +82,10 @@
                             $idEncuesta;
                         @endphp
 
-                        @foreach ($encuestas as $key => $item)
-
-                            @if ($categoria->id == $item->id_categoria)
-
-                                @php
-                                    $idEncuesta = $key;
-                                @endphp
-
-                            @endif
-
-                        @endforeach
+                        
 
                         <a class="text-decoration-none"
-                            href="{{ route('home.encuesta.index', ['categoria' => $categoria->id, 'encuesta' => $encuestas[$idEncuesta]->id, 'municipio']) }}">
+                            href="{{ route('home.encuesta.index', ['categoria' => $categoria->id]) }}">
 
                             <img src="{{ asset('storage/firmas/escudo_de_armas.png') }}" style="width:20%"
                                 class="img-fluid mx-auto d-block">
@@ -107,7 +97,7 @@
                             <p class="lead text-primary fw-bold mb-4 text-center">{!! $categoria->nombre_categoria !!}</p>
 
 
-                            <a href="{{ route('home.encuesta.index', ['categoria' => $categoria->id, 'encuesta' => $encuestas[$idEncuesta]->id]) }}"
+                            <a href="{{ route('home.encuesta.index', ['categoria' => $categoria->id]) }}"
                                 class="text-decoration-none">
 
                                 <p class="text-secondary fw-bold text-center">

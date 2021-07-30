@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $encuesta->nombre_encuesta }}</title>
+    <title>Opinión ciudadana</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -27,6 +27,12 @@
         <div class="container">
 
             <a class="navbar-brand fw-bold" href="{{ route('home') }}"><strong>tabasco</strong>.gob.mx</a>
+            <li class="nav-item d-flex">
+
+                <a class="nav-link align-self-center text-white" href="{{ route('home') }}">Inicio</a>
+                <a class="nav-link align-self-center text-white" href="{{route('home.categorias')}}">Categorías</a>
+
+            </li>
 
         </div>
 
@@ -38,128 +44,214 @@
 
             <img class="d-block mx-auto mb-4" src="{{ asset('storage/firmas/escudo_de_armas.png') }}" width="80">
 
-            <h2 class="text-primary">{{ $encuesta->nombre_encuesta }}</h2>
+            <h2 class="text-primary">Opinión ciudadana</h2>
 
-            <p class="lead">{{ $encuesta->descripcion_encuesta }}</p>
+            <p class="lead">Conocer los trámites que mayor impactan en la población, a través de una plataforma digital que sirva como un sistema abierto de participación ciudadana, para que tanto el sector privado como el público en general, identifiquen las problemáticas que presentan al realizar trámites estatales y municipales.</p>
 
         </div>
 
-        <form class="row g-3 needs-validation" novalidate>
+        <div id="generales">
 
-            @foreach ($preguntas as $pregunta)
+            <h2>Datos Generales</h2> 
 
-                @php
+            <hr class="mb-4">
+
+            <div class="mb-3">
+
+                <label class="form-label">Nombre</label>
+
+                <input type="text" placeholder="Nombre completo" class="form-control" name="nombreu" id="nombreu">
+
+            </div>
+
+            <div class="mb-3">
+                
+                <label class="form-label"> Correo Electronico</label>
+
+                <input type="email"  placeholder="correo@gmail.com" class="form-control" name="email" id="email">
+
+            </div>
+
+            <div class="mb-3">
+                
+                <label class="form-label">Edad</label>
+
+                <input type="text" placeholder="Edad" class="form-control" name="edad" id="edad">
+            
+            </div>
+
+            <div class="mb-3">
+                
+                <label class="form-label">Grado de estudios</label>
+
+                <select name="estudi" id="estudio" class="form-select">
+
+                    <option value="0"> Seleccione una opción</option>
+                    <option value="secunadria">Primaria</option>
+                    <option value="Bachillerato">Bachillerato</option>
+                    <option value="Licenciatura">Licenciatura</option>
+                    <option value="Posgrado">Posgrado</option>
+
+                </select>
+            
+            </div>
+
+        </div>
+
+        <h2>Encuesta</h2> 
+
+        <hr class="mb-4">
+
+        <form class="row g-3 needs-validation" novalidate id="encuesta">
+
+            <div class="mb-3">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <label for="" class="form-label">¿Qué Tramites considera más Engorroso?</label>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="form-label">¿Porque?</label>
+                    </div>
+                </div>
+                
+
+                <div class="row mb-3">
                     
-                    $nombre = $pregunta->tipo_pregunta . ($loop->index + 1);
-                    
-                @endphp
+                    <div class="col-md-6">
+                        
+                        <input type="text" class="form-control" name="pregunta1" id="pregunta1" idPregunta="1">
+                   
+                    </div>
 
+                    <div class="col-md-6">
 
-                <div class="form-group">
+                        <select name="porque" id="porque" class="form-select">
+                            <option  value="0">Selecciona una opción</option>
+                            <option idPregunta="4" value="Demasiados requisitos">Demasiados requisitos</option>
+                            <option idPregunta="4" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
+                            <option idPregunta="4" value="Solicitud de dadivas para su agilización (Corrupción)">Solicitud de dadivas para su agilización (Corrupción)</option>
+                            <option idPregunta="4" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy complejo, proceso tedioso y largo</option>
+                            <option idPregunta="4" value="Dificultad para localizar las oficinas de atención">Dificultad para localizar las oficinas de atención</option>
+                            <option idPregunta="4" value="Mala atención del Servidor Público">Mala atención del Servidor Público</option>
+                            <option idPregunta="4" value="No conozco las oficinas para realizarlo">No conozco las oficinas para realizarlo</option>
+                         </select>
 
-                    <label class="form-label">
+                    </div>
+                </div>
 
-                        @if ($pregunta->nombre_pregunta != '')
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="pregunta1" id="pregunta2" idPregunta="2">
+                    </div>
+                    <div class="col-md-6">
 
-                            {{ $loop->index + 1 . '.- ' . $pregunta->nombre_pregunta }}
-
-                        @endif
-
-                        @if ($pregunta->obligatoria == 1)
-
-                            {{ '*' }}
-                        @endif
-
-                    </label>
-
-                    @if ($pregunta->tipo_pregunta === 'buscador')
-
-                        <select id="{{ $nombre }}" name="{{ $nombre }}" idPregunta="{{ $pregunta->id }}"
-                            tipoPregunta="{{ $pregunta->tipo_pregunta }}"
-                            class="form-control buscador-ejemplo1 @php
-                                if ($pregunta->obligatoria == 1) {
-                                    echo 'buscador_obligatoria';
-                                }
-                            @endphp" @if ($pregunta->obligatoria == 1) required @endif>
-                            <option value="0"> Seleccione una opción</option>
-                            @foreach ($tramites as $tramite)
-
-                                <option idPregunta="{{ $pregunta->id }}"
-                                    tipoPregunta="{{ $pregunta->tipo_pregunta }}" value="{{ $tramite->id }}">
-                                    {{ $tramite->nombre_tramite }}
-                                </option>
-
-                            @endforeach
+                        <select name="porque2" id="porque" class="form-select">
+                            <option  value="0">Selecciona una opción</option>
+                            <option idPregunta="5" value="Demasiados requisitos">Demasiados requisitos</option>
+                            <option idPregunta="5" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
+                            <option idPregunta="5" value="Solicitud de dadivas para su agilización (Corrupción)">Solicitud de dadivas para su agilización (Corrupción)</option>
+                            <option idPregunta="5" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy complejo, proceso tedioso y largo</option>
+                            <option idPregunta="5" value="Dificultad para localizar las oficinas de atención">Dificultad para localizar las oficinas de atención</option>
+                            <option idPregunta="5" value="Mala atención del Servidor Público">Mala atención del Servidor Público</option>
+                            <option idPregunta="5" value="No conozco las oficinas para realizarlo">No conozco las oficinas para realizarlo</option>    
                         </select>
 
-                    @endif
+                    </div>
+                </div>
 
-                    @if ($pregunta->tipo_pregunta === 'respuestaCorta')
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="pregunta1" id="pregunta3" idPregunta="3">
+                    </div>
+                    <div class="col-md-6">
 
-                        <input type="text" name="{{ $nombre }}" idPregunta="{{ $pregunta->id }}"
-                            tipoPregunta="{{ $pregunta->tipo_pregunta }}"
-                            class="form-control form-control-border @php
-                                if ($pregunta->obligatoria == 1) {
-                                    echo 'obligatoria';
-                                }
-                            @endphp" placeholder="Tu respuesta"
-                            obligatorio="{{ $pregunta->obligatoria }}">
+                        <select name="porque3" id="porque" class="form-select">
+                            <option  value="0">Selecciona una opción</option>
+                            <option idPregunta="6" value="Demasiados requisitos">Demasiados requisitos</option>
+                            <option idPregunta="6" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
+                            <option idPregunta="6" value="Solicitud de dadivas para su agilización (Corrupción)">Solicitud de dadivas para su agilización (Corrupción)</option>
+                            <option idPregunta="6" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy complejo, proceso tedioso y largo</option>
+                            <option idPregunta="6" value="Dificultad para localizar las oficinas de atención">Dificultad para localizar las oficinas de atención</option>
+                            <option idPregunta="6" value="Mala atención del Servidor Público">Mala atención del Servidor Público</option>
+                            <option idPregunta="6" value="No conozco las oficinas para realizarlo">No conozco las oficinas para realizarlo</option>
+                         </select>
 
-                    @endif
+                    </div>
+                </div>
+            </div>
 
-                    @if ($pregunta->tipo_pregunta === 'respuestaLarga')
+            <div class="mb-3">
 
-                        <textarea name="{{ $nombre }}" class="form-control" rows="3"
-                            idPregunta="{{ $pregunta->id }}" tipoPregunta="{{ $pregunta->tipo_pregunta }}"
-                            placeholder="Tu respuesta" obligatorio="{{ $pregunta->obligatoria }}"></textarea>
+                <label class="form-label">¿Conoces el portal de trámites Tabasco?</label> 
 
-                    @endif
+                <div class="form-check">
 
-                    @if ($pregunta->tipo_pregunta === 'variasOpciones')
+                    <input class="form-check-input "type="radio"  id="option1" name="option2" value="si" name="status" idPregunta="7">
+                    <label class="form-check-label" for="flexRadioDefault1">Si</label>
 
-                        @foreach ($opciones as $opcion)
+                </div>
+               
+                <div class="form-check">
+                    <input class="form-check-input" type="radio"  id="option2" name="option2" value="no" name="status" idPregunta="7">
+                    <label class="form-check-label" for="flexRadioDefault1">No</label>
+                </div>
 
-                            @if ($pregunta->id === $opcion->id_pregunta)
+            </div>
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="{{ $nombre }}"
-                                        idPregunta="{{ $pregunta->id }}"
-                                        tipoPregunta="{{ $pregunta->tipo_pregunta }}"
-                                        id="radio{{ $loop->index + 1 }}" value="{{ $opcion->id }}">
-                                    <label class="form-check-label">{{ $opcion->opcion_respuesta }}</label>
-                                </div>
+            <div class="mb-3">
+                <label class="form-label">¿Qué tramite le gustaría se realizara en línea?</label>
 
-                            @endif
+                <div class="col-md-12 mb-3">
 
-                        @endforeach
-
-                    @endif
-
-                    @if ($pregunta->tipo_pregunta === 'casillas')
-
-                        @foreach ($opciones as $opcion)
-
-                            @if ($pregunta->id === $opcion->id_pregunta)
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" idPregunta="{{ $pregunta->id }}"
-                                        tipoPregunta="{{ $pregunta->tipo_pregunta }}" name="{{ $nombre }}"
-                                        id="checkbox{{ $loop->index + 1 }}" value="{{ $opcion->id }}">
-                                    <label class="form-check-label">{{ $opcion->opcion_respuesta }}</label>
-                                </div>
-
-                            @endif
-
-                        @endforeach
-
-                    @endif
-
-                    <span class="message help-block text-danger"></span>
-
+                    <input type="text" name="tramiter1" id="tramite1" class="form-control" idPregunta="8">
 
                 </div>
 
-            @endforeach
+                <div class="col-md-12 mb-3">
+
+                    <input type="text" name="tramiter2" id="tramite2" class="form-control" idPregunta="9">
+
+                </div>
+
+                <div class="col-md-12 mb-3">
+
+                    <input type="text" name="tramiter3" id="tramite3" class="form-control" idPregunta="10">
+
+                </div>
+
+                <div class="col-md-12 mb-3">
+
+                    <input type="text" name="tramiter4" id="tramite4" class="form-control" idPregunta="11">
+
+                </div>
+
+                <div class="col-md-12 mb-3">
+
+                    <input type="text" name="tramiter5" id="tramite5" class="form-control" idPregunta="12">
+
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                
+                <label class="form-label">¿En que tramite te han pedido soborno?</label>
+
+                <input type="text" class="form-control" name="preguntau" id="preguntau" idPregunta="13"> 
+
+
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Ayúdanos a Mejorar tu experiencia en la realización de los tramites gubernamentales a través de este mecanismo de opinión ciudadana, es importante emita sus comentarios:
+                </label>
+
+                <textarea class="form-control" name="textarea" id="textarea" rows="10" idPregunta="14"></textarea>
+
+            </div>
 
             <hr class="mb-4">
 
@@ -171,7 +263,6 @@
 
             </div>
 
-            {{ $idUsuario }}
 
         </form>
 
@@ -203,6 +294,10 @@
             $('.' + campo).find('input,textarea,select').each(function(index, el) {
 
                 let entrada = $(el);
+
+                if(entrada.prop('idPregunta') != 14){
+                    
+                }
 
                 if (entrada.is('input:text') || entrada.is('textarea')) {
 
@@ -260,7 +355,7 @@
             if (errors.length > 0) {
                 $.each(errors, function(index, val) {
                     $('.' + campo).find(val.elemento).siblings('.message').text(val.error);
-                    $('.' + campo).find(val.elemento).parent('.form-group').addClass('invalid');
+                    $('.' + campo).find(val.elemento).addClass('invalid');
                 });
                 return false;
             }
@@ -284,39 +379,23 @@
                     $('#encuesta input:text, textarea, input:checkbox:checked, input:radio:checked, option:selected')
                         .each(function() {
 
-                            var idPregunta = $(this).attr("idPregunta");
-
-                            var tipoPregunta = $(this).attr("tipoPregunta");
-
-                            var nombre = $(this).attr("tipoPregunta")
+                            var idPregunta = $(this).attr("idPregunta");                                                       
+                    
 
                             var valor = $(this).val();
 
-                            if (tipoPregunta == 'respuestaCorta' || tipoPregunta == 'respuestaLarga' ||
-                                tipoPregunta == 'buscador') {
-
-                                datos.push({
-                                    "id_pregunta": idPregunta,
-                                    "tipo_pregunta": tipoPregunta,
-                                    "respuesta_texto": valor,
-                                    "id_usuario": "{{ session('user_id') }}",
-                                    "id_opcion": null
+                           if(idPregunta != null){
+                            datos.push({
+                                "idPregunta": idPregunta,
+                                "respuesta_texto": valor,                                                                                 
                                 });
-
-                            } else {
-
-                                datos.push({
-                                    "id_pregunta": idPregunta,
-                                    "tipo_pregunta": tipoPregunta,
-                                    "respuesta_texto": null,
-                                    "id_usuario": "{{ session('user_id') }}",
-                                    "id_opcion": valor
-                                });
-
-                            }
-
+                           }
+                                
+                                
+                                                     
                         });
-
+                        console.log(datos);                        
+                    
                     let _url = "{{ route('home.encuesta.store') }}";
 
                     $.ajaxSetup({
@@ -325,24 +404,28 @@
                         }
                     });
 
-                    $.ajax({
+                    $.ajax({                        
                         url: _url,
                         type: "POST",
                         data: {
                             data: datos,
-                            idEncuesta: '{{ $idEncuesta }}',
-                            idUsuario: "{{ session('user_id')}}",
-                            idMunicipio: "{{ $idMunicipio }}"
+                            idCategoria: "{{ $idCategoria }}",
+                            idMunicipio: "{{ $idMunicipio }}",                                                                                                                                     
+                            estudio: $('#estudio').val(),
+                            nombreu: $('#nombreu').val(),
+                            email: $('#email').val(),
+                            edad: $('#edad').val()                      
                         },
                         dataType: "json",
-                        success: function(response) {
-
-                            location.href = "{{ route('home.encuesta.agradecimiento', [($id = $encuesta->id)]) }}";
+                        success: function(response) {   
+                            console.log(response);                     
+                           location.href = "{{ route('home.encuesta.agradecimiento', [($id = $idCategoria )]) }}";
                                 
 
                         }
                     });
                 } else {
+                   
                     event.preventDefault();
                     event.stopPropagation();
                 }
