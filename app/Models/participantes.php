@@ -5,10 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class usuarios_respuestas extends Model
+class participantes extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['pregunta','id_participante','respuesta_texto','id_categoria','id_municipio'];
-
+    protected $fillable = [
+        'nombre',
+        'email',
+        'edad',
+        'estudio'
+ 
+    ];
 }

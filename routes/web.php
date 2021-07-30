@@ -45,17 +45,17 @@ Route::get('/logout', [loginController::class,'logout'])->name('home.logout');
 
 // RUTAS DE LAS ENCUESTAS
 
-Route::get('/categorias', [HomeCategoriasController::class, 'index'])->name('home.categorias')->middleware('status','prevent-back-history');
+Route::get('/categorias', [HomeCategoriasController::class, 'index'])->name('home.categorias');
 
-Route::get('/categorias/{id}', [HomeCategoriasController::class, 'showCategoria'])->name('home.categorias.show')->middleware('status','prevent-back-history');
+Route::get('/categorias/{id}', [HomeCategoriasController::class, 'showCategoria'])->name('home.categorias.show');
 
-Route::get('home/encuesta/categoria/{categoria}/municipio/{municipio}', [HomeEncuestaController::class, 'showEncuesta'])->name('home.encuesta.show')->middleware('status','prevent-back-history');
+Route::get('home/encuesta/categoria/{categoria}/municipio', [HomeEncuestaController::class, 'homeEncuesta'])->name('home.encuesta.show');
 
-Route::get('home/encuesta/categoria/{categoria}/encuesta/{encuesta}/municipio/{municipio?}', [HomeEncuestaController::class, 'homeEncuesta'])->name('home.encuesta.index')->middleware('status','prevent-back-history');
+Route::get('home/encuesta/categoria/{categoria}/municipio/{municipio?}', [HomeEncuestaController::class, 'homeEncuesta'])->name('home.encuesta.index');
 
-Route::post('home/encuesta/respuestas/create',[HomeEncuestaController::class, 'storeRespuesta'])->name('home.encuesta.store')->middleware('status','prevent-back-history');
+Route::post('home/encuesta/respuestas/create',[HomeEncuestaController::class, 'storeRespuesta'])->name('home.encuesta.store');
 
-Route::get('home/encuesta/agradecimientos/{id}', [HomeEncuestaController::class, 'agradecimiento'])->name('home.encuesta.agradecimiento')->middleware('status','prevent-back-history');
+Route::get('home/encuesta/agradecimientos/{id}', [HomeEncuestaController::class, 'agradecimiento'])->name('home.encuesta.agradecimiento');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('dash', function () {
 

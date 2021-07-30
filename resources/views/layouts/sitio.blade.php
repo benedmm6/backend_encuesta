@@ -47,40 +47,11 @@
                     <li class="nav-item d-flex">
 
                         <a class="nav-link align-self-center text-white" href="{{ route('home') }}">Inicio</a>
+                        <a class="nav-link align-self-center text-white" href="{{route('home.categorias')}}">Categorías</a>
 
                     </li>
 
-                    @if (empty(session('user_id')))
-
-                    <li class="nav-item d-flex">
-
-                        <a class="nav-link align-self-center text-white" href="{{ route('home.usuarios.index') }}">Registro</a>
-
-                    </li>
-
-                    <li class="nav-item d-flex">
-
-                        <a class="nav-link align-self-center text-white" href="{{ route('loginu.index') }}">Iniciar Sesión</a>
-
-                    </li>
-                        
-                    @endif
-
-                    @if (!empty(session('user_id')))
-                        
-                    <li class="nav-item d-flex">
-
-                        <a class="nav-link align-self-center text-white" href="{{ route('home.categorias') }}">Categorias</a>
-
-                    </li>
-
-                    <li class="nav-item d-flex">
-
-                        <a class="nav-link align-self-center text-white" href="{{route('home.logout')}}">Cerrar Sesión</a>
-
-                    </li>
-
-                    @endif
+                 
 
             </div>
 
