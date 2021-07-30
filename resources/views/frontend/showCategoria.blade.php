@@ -52,7 +52,7 @@
 
                     <div class="col-md-2 py-md-5">
 
-                        <a href="{{ route('home.encuesta.index', ['categoria' => $categoria->id, 'encuesta' => $encuestas[0]->id, 'municipio' => $municipio->id]) }}"
+                        <a href="{{ route('home.encuesta.index', ['categoria' => $categoria->id,  'municipio' => $municipio->id]) }}"
                             class="text-decoration-none">
 
                             <img src="{{ asset('storage/' . $municipio->icono) }}" class="img-fluid mx-auto d-block">
