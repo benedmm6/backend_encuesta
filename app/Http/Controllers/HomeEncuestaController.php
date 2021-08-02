@@ -66,46 +66,63 @@ class HomeEncuestaController extends Controller
     public function storeRespuesta(Request $request){
 
        $datos = $request->all();
-        participantes::create([
-            'nombre'=>$datos['nombreu'],
-            'email' => $datos['email'],
-            'edad' => $datos['edad'],
-            'estudio' => $datos['estudio']
-        ]);            
+              
      
-        $idparticipante=  DB::table('participantes')
-        ->select('id')
-        ->where('email','=', $datos['email'])
-        ->first()
-        ->id;
+
         $idCategoria=DB::table('categorias')
         ->select('id')
         ->where('id','=', $datos['idCategoria'])
         ->first()
         ->id;
+        if($datos['nombreu'] && $datos['email'] && $datos['edad'] && $datos['estudio']==!null){
+            participantes::create([
+                'nombre'=>$datos['nombreu'],
+                'email' => $datos['email'],
+                'edad' => $datos['edad'],
+                'estudio' => $datos['estudio']
+            ]);   
+            foreach ($datos['data'] as $dato) {
+                //echo $dato['idpregunta'];
+               // echo $dato;
+               if($request['idMunicipio']!=null){        
+                     usuarios_respuestas::create([
+                       'pregunta' => $dato['idPregunta'],
+                       'respuesta_texto' => $dato['respuesta_texto'],
+                       'id_categoria'=> $idCategoria,
+                       'id_municipio'=>$request['idMunicipio']
+                   ]);       
+               }else{
+                   usuarios_respuestas::create([
+                       'pregunta' => $dato['idPregunta'],
+                       'respuesta_texto' => $dato['respuesta_texto'],
+                       'id_categoria'=> $idCategoria,                    
+                   ]);             
+               } 
+                          
+           }
 
-        
-        foreach ($datos['data'] as $dato) {
-             //echo $dato['idpregunta'];
-            // echo $dato;
-            if($request['idMunicipio']!=null){        
-                  usuarios_respuestas::create([
-                    'pregunta' => $dato['idPregunta'],
-                    'respuesta_texto' => $dato['respuesta_texto'],
-                    'id_participante' => $idparticipante,
-                    'id_categoria'=> $idCategoria,
-                    'id_municipio'=>$request['idMunicipio']
-                ]);       
-            }else{
-                usuarios_respuestas::create([
-                    'pregunta' => $dato['idPregunta'],
-                    'respuesta_texto' => $dato['respuesta_texto'],
-                    'id_participante' => $idparticipante,
-                    'id_categoria'=> $idCategoria,                    
-                ]);             
-            } 
-                       
         }
+        else{
+            foreach ($datos['data'] as $dato) {
+                //echo $dato['idpregunta'];
+               // echo $dato;
+               if($request['idMunicipio']!=null){        
+                     usuarios_respuestas::create([
+                       'pregunta' => $dato['idPregunta'],
+                       'respuesta_texto' => $dato['respuesta_texto'],
+                       'id_categoria'=> $idCategoria,
+                       'id_municipio'=>$request['idMunicipio']
+                   ]);       
+               }else{
+                   usuarios_respuestas::create([
+                       'pregunta' => $dato['idPregunta'],
+                       'respuesta_texto' => $dato['respuesta_texto'],                       
+                       'id_categoria'=> $idCategoria,                    
+                   ]);             
+               } 
+                          
+           }            
+        }            
         
         
 
