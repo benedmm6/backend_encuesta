@@ -1,3 +1,4 @@
+
 use encuesta;
 
 /*========== CATEGORIAS ==========*/
@@ -24,4 +25,8 @@ INSERT INTO municipios (id,nombre_municipio,icono) VALUES (14,'Paraíso','iconos
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (15,'Tacotalpa','iconos/tacotalpa.png');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (16,'Teapa','iconos/teapa.png');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (17,'Tenosique','iconos/tenosique.png');
+
+/*========== PARTICIPANTES ==========*/
+
+INSERT INTO participantes(id,nombre,email,edad,estudio) VALUES (1,'Usuario Anónimo', NULL, NULL, NULL);
 

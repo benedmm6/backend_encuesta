@@ -30,7 +30,7 @@
             <li class="nav-item d-flex">
 
                 <a class="nav-link align-self-center text-white" href="{{ route('home') }}">Inicio</a>
-                <a class="nav-link align-self-center text-white" href="{{route('home.categorias')}}">Categorías</a>
+                <a class="nav-link align-self-center text-white" href="{{ route('home.categorias') }}">Categorías</a>
 
             </li>
 
@@ -46,13 +46,16 @@
 
             <h2 class="text-primary">Opinión ciudadana</h2>
 
-            <p class="lead">Conocer los trámites que mayor impactan en la población, a través de una plataforma digital que sirva como un sistema abierto de participación ciudadana, para que tanto el sector privado como el público en general, identifiquen las problemáticas que presentan al realizar trámites estatales y municipales.</p>
+            <p class="lead">Conocer los trámites que mayor impactan en la población, a través de una plataforma digital
+                que sirva como un sistema abierto de participación ciudadana, para que tanto el sector privado como el
+                público en general, identifiquen las problemáticas que presentan al realizar trámites estatales y
+                municipales.</p>
 
         </div>
 
         <div id="generales">
 
-            <h2>Datos Generales</h2> 
+            <h2>Datos Generales</h2>
 
             <hr class="mb-4">
 
@@ -64,17 +67,17 @@
 
             </div>
 
-            
+
             <div class="mb-3">
-                
+
                 <label class="form-label">Edad</label>
 
                 <input type="text" placeholder="Edad" class="form-control" name="edad" id="edad">
-            
+
             </div>
 
             <div class="mb-3">
-                
+
                 <label class="form-label">Grado de estudios</label>
 
                 <select name="estudio" id="estudio" class="form-select">
@@ -86,20 +89,20 @@
                     <option value="Posgrado">Posgrado</option>
 
                 </select>
-            
+
             </div>
 
             <div class="mb-3">
-                
+
                 <label class="form-label"> Ocupacion</label>
 
-                <input type="text"  placeholder="Ocupacion" class="form-control" name="email" id="email">
+                <input type="text" placeholder="Ocupacion" class="form-control" name="email" id="email">
 
             </div>
 
         </div>
 
-        <h2>Encuesta</h2> 
+        <h2>Encuesta</h2>
 
         <hr class="mb-4">
 
@@ -116,28 +119,34 @@
                         <label for="" class="form-label">¿Porque?</label>
                     </div>
                 </div>
-                
+
 
                 <div class="row mb-3">
-                    
+
                     <div class="col-md-6">
-                        
+
                         <input type="text" class="form-control" name="pregunta1" id="pregunta1" idPregunta="1">
-                   
+
                     </div>
 
                     <div class="col-md-6">
 
                         <select name="porque" id="porque" class="form-select">
-                            <option  value="0">Selecciona una opción</option>
+                            <option value="0">Selecciona una opción</option>
                             <option idPregunta="4" value="Demasiados requisitos">Demasiados requisitos</option>
-                            <option idPregunta="4" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
-                            <option idPregunta="4" value="Solicitud de dadivas para su agilización (Corrupción)">Solicitud de dadivas para su agilización (Corrupción)</option>
-                            <option idPregunta="4" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy complejo, proceso tedioso y largo</option>
-                            <option idPregunta="4" value="Dificultad para localizar las oficinas de atención">Dificultad para localizar las oficinas de atención</option>
-                            <option idPregunta="4" value="Mala atención del Servidor Público">Mala atención del Servidor Público</option>
-                            <option idPregunta="4" value="No conozco las oficinas para realizarlo">No conozco las oficinas para realizarlo</option>
-                         </select>
+                            <option idPregunta="4" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de
+                                Respuesta o Resolución demasiado largo</option>
+                            <option idPregunta="4" value="Solicitud de dadivas para su agilización (Corrupción)">
+                                Solicitud de dadivas para su agilización (Corrupción)</option>
+                            <option idPregunta="4" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy
+                                complejo, proceso tedioso y largo</option>
+                            <option idPregunta="4" value="Dificultad para localizar las oficinas de atención">Dificultad
+                                para localizar las oficinas de atención</option>
+                            <option idPregunta="4" value="Mala atención del Servidor Público">Mala atención del Servidor
+                                Público</option>
+                            <option idPregunta="4" value="No conozco las oficinas para realizarlo">No conozco las
+                                oficinas para realizarlo</option>
+                        </select>
 
                     </div>
                 </div>
@@ -149,14 +158,20 @@
                     <div class="col-md-6">
 
                         <select name="porque2" id="porque2" class="form-select">
-                            <option  value="0">Selecciona una opción</option>
+                            <option value="0">Selecciona una opción</option>
                             <option idPregunta="5" value="Demasiados requisitos">Demasiados requisitos</option>
-                            <option idPregunta="5" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
-                            <option idPregunta="5" value="Solicitud de dadivas para su agilización (Corrupción)">Solicitud de dadivas para su agilización (Corrupción)</option>
-                            <option idPregunta="5" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy complejo, proceso tedioso y largo</option>
-                            <option idPregunta="5" value="Dificultad para localizar las oficinas de atención">Dificultad para localizar las oficinas de atención</option>
-                            <option idPregunta="5" value="Mala atención del Servidor Público">Mala atención del Servidor Público</option>
-                            <option idPregunta="5" value="No conozco las oficinas para realizarlo">No conozco las oficinas para realizarlo</option>    
+                            <option idPregunta="5" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de
+                                Respuesta o Resolución demasiado largo</option>
+                            <option idPregunta="5" value="Solicitud de dadivas para su agilización (Corrupción)">
+                                Solicitud de dadivas para su agilización (Corrupción)</option>
+                            <option idPregunta="5" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy
+                                complejo, proceso tedioso y largo</option>
+                            <option idPregunta="5" value="Dificultad para localizar las oficinas de atención">Dificultad
+                                para localizar las oficinas de atención</option>
+                            <option idPregunta="5" value="Mala atención del Servidor Público">Mala atención del Servidor
+                                Público</option>
+                            <option idPregunta="5" value="No conozco las oficinas para realizarlo">No conozco las
+                                oficinas para realizarlo</option>
                         </select>
 
                     </div>
@@ -169,15 +184,21 @@
                     <div class="col-md-6">
 
                         <select name="porque3" id="porque3" class="form-select">
-                            <option  value="0">Selecciona una opción</option>
+                            <option value="0">Selecciona una opción</option>
                             <option idPregunta="6" value="Demasiados requisitos">Demasiados requisitos</option>
-                            <option idPregunta="6" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de Respuesta o Resolución demasiado largo</option>
-                            <option idPregunta="6" value="Solicitud de dadivas para su agilización (Corrupción)">Solicitud de dadivas para su agilización (Corrupción)</option>
-                            <option idPregunta="6" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy complejo, proceso tedioso y largo</option>
-                            <option idPregunta="6" value="Dificultad para localizar las oficinas de atención">Dificultad para localizar las oficinas de atención</option>
-                            <option idPregunta="6" value="Mala atención del Servidor Público">Mala atención del Servidor Público</option>
-                            <option idPregunta="6" value="No conozco las oficinas para realizarlo">No conozco las oficinas para realizarlo</option>
-                         </select>
+                            <option idPregunta="6" value="Tiempo de Respuesta o Resolución demasiado largo">Tiempo de
+                                Respuesta o Resolución demasiado largo</option>
+                            <option idPregunta="6" value="Solicitud de dadivas para su agilización (Corrupción)">
+                                Solicitud de dadivas para su agilización (Corrupción)</option>
+                            <option idPregunta="6" value="Trámite muy complejo, proceso tedioso y largo">Trámite muy
+                                complejo, proceso tedioso y largo</option>
+                            <option idPregunta="6" value="Dificultad para localizar las oficinas de atención">Dificultad
+                                para localizar las oficinas de atención</option>
+                            <option idPregunta="6" value="Mala atención del Servidor Público">Mala atención del Servidor
+                                Público</option>
+                            <option idPregunta="6" value="No conozco las oficinas para realizarlo">No conozco las
+                                oficinas para realizarlo</option>
+                        </select>
 
                     </div>
                 </div>
@@ -185,17 +206,19 @@
 
             <div class="mb-3">
 
-                <label class="form-label">¿Conoces el portal de trámites Tabasco?</label> 
+                <label class="form-label">¿Conoces el portal de trámites Tabasco?</label>
 
                 <div class="form-check">
 
-                    <input class="form-check-input "type="radio"  id="option1" name="option2" value="si" name="status" idPregunta="7">
+                    <input class="form-check-input " type="radio" id="option1" name="option2" value="si" name="status"
+                        idPregunta="7">
                     <label class="form-check-label" for="flexRadioDefault1">Si</label>
 
                 </div>
-               
+
                 <div class="form-check">
-                    <input class="form-check-input" type="radio"  id="option2" name="option2" value="no" name="status" idPregunta="7">
+                    <input class="form-check-input" type="radio" id="option2" name="option2" value="no" name="status"
+                        idPregunta="7">
                     <label class="form-check-label" for="flexRadioDefault1">No</label>
                 </div>
 
@@ -237,17 +260,18 @@
             </div>
 
             <div class="mb-3">
-                
+
                 <label class="form-label">¿En que tramite te han pedido soborno?</label>
 
-                <input type="text" class="form-control" name="preguntau" id="preguntau" idPregunta="13"> 
+                <input type="text" class="form-control" name="preguntau" id="preguntau" idPregunta="13">
 
 
             </div>
 
             <div class="mb-3">
                 <label class="form-label">
-                    Ayúdanos a Mejorar tu experiencia en la realización de los tramites gubernamentales a través de este mecanismo de opinión ciudadana, es importante emita sus comentarios:
+                    Ayúdanos a Mejorar tu experiencia en la realización de los tramites gubernamentales a través de este
+                    mecanismo de opinión ciudadana, es importante emita sus comentarios:
                 </label>
 
                 <textarea class="form-control" name="textarea" id="textarea" rows="10" idPregunta="14"></textarea>
@@ -292,11 +316,13 @@
 
             let errors = [];
 
-            $('#encuesta').find('#pregunta1,#porque,#pregunta2,#porque2,#pregunta3,#porque3,input,#tramite1,#preguntau,#textarea').each(function(index, el) {
+            $('#encuesta').find(
+                '#pregunta1,#porque,#pregunta2,#porque2,#pregunta3,#porque3,input,#tramite1,#preguntau,#textarea'
+                ).each(function(index, el) {
 
                 let entrada = $(el);
 
-                if (entrada.is('#pregunta1') ) {
+                if (entrada.is('#pregunta1')) {
 
                     if (entrada.val().trim().length === 0) {
 
@@ -320,157 +346,152 @@
                         }
 
                     }
-                }else if(entrada.is('#pregunta2') ) {
+                } else if (entrada.is('#pregunta2')) {
 
-                        if (entrada.val().trim().length === 0) {
+                    if (entrada.val().trim().length === 0) {
 
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'No dejar el campo vacío'
+                        });
+
+                    } else {
+                        if (!el.checkValidity()) {
                             errors.push({
-                                 'elemento': entrada,
-                                 'error': 'No dejar el campo vacío'
-                             });
+                                'elemento': entrada,
+                                'error': 'El campo no cumple los requisitos de validación'
+                            });
+                        } else {
+                            entrada.siblings('.message').text('');
+                            entrada.removeClass('invalid');
+                        }
 
-                         } else {
-                             if (!el.checkValidity()) {
-                                 errors.push({
-                                     'elemento': entrada,
-                                     'error': 'El campo no cumple los requisitos de validación'
-                                 });
-                            }
-                             else {
-                                 entrada.siblings('.message').text('');
-                                 entrada.removeClass('invalid');
-                             }
+                    }
+                } else if (entrada.is('#pregunta3')) {
 
-                         }
-                 }else if(entrada.is('#pregunta3') ) {
+                    if (entrada.val().trim().length === 0) {
 
-                         if (entrada.val().trim().length === 0) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'No dejar el campo vacío'
+                        });
 
-                              errors.push({
-                              'elemento': entrada,
-                              'error': 'No dejar el campo vacío'
-                               });
+                    } else {
+                        if (!el.checkValidity()) {
+                            errors.push({
+                                'elemento': entrada,
+                                'error': 'El campo no cumple los requisitos de validación'
+                            });
+                        } else {
+                            entrada.siblings('.message').text('');
+                            entrada.removeClass('invalid');
+                        }
 
-                             } else {
-                                 if (!el.checkValidity()) {
-                                     errors.push({
-                                         'elemento': entrada,
-                                         'error': 'El campo no cumple los requisitos de validación'
-                                     });
-                                }
-                                 else {
-                                     entrada.siblings('.message').text('');
-                                     entrada.removeClass('invalid');
-                                 }
+                    }
+                } else if (entrada.is('#porque')) {
+                    if (entrada.val() == 0) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'Selecciona una razón'
+                        });
+                    } else {
+                        entrada.siblings('.message').text('');
+                        entrada.parent('.form-select').removeClass('invalid');
+                    }
+                } else if (entrada.is('#porque2')) {
+                    if (entrada.val() == 0) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'selecciona una razón'
+                        });
+                    } else {
+                        entrada.siblings('.message').text('');
+                        entrada.parent('.form-select').removeClass('invalid');
+                    }
+                } else if (entrada.is('#porque3')) {
+                    if (entrada.val() == 0) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'selecciona una razón'
+                        });
+                    } else {
+                        entrada.siblings('.message').text('');
+                        entrada.parent('.form-select').removeClass('invalid');
+                    }
+                } else if (entrada.prop('type') == 'radio') {
+                    if (!$('.' + campo).find('input[name="' + entrada.prop('name') + '"]:checked').length) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'Selecciona una opción',
+                        });
+                    } else {
+                        entrada.siblings('.message').text('');
+                        entrada.removeClass('invalid');
+                    }
+                } else if (entrada.is('#tramite1')) {
 
-                             }
-                            }else if(entrada.is('#porque')){
-                                if(entrada.val() == 0){
-                                    errors.push({
-                                        'elemento': entrada,
-                                        'error': 'Selecciona una razón'                                       
-                                    });
-                                 }else{
-                                     entrada.siblings('.message').text('');
-                                      entrada.parent('.form-select').removeClass('invalid');
-                                     }
-                            }else if(entrada.is('#porque2')){
-                                if(entrada.val()==0){
-                                    errors.push({
-                                        'elemento':entrada,
-                                        'error':'selecciona una razón'
-                                    });
-                                }else{
-                                    entrada.siblings('.message').text('');
-                                    entrada.parent('.form-select').removeClass('invalid');
-                                }
-                            }else if(entrada.is('#porque3')){
-                                if(entrada.val()==0){
-                                    errors.push({
-                                        'elemento':entrada,
-                                        'error':'selecciona una razón'
-                                    });
-                                }else{
-                                    entrada.siblings('.message').text('');
-                                    entrada.parent('.form-select').removeClass('invalid');
-                                }
-                            }else if (entrada.prop('type') == 'radio') {
-                              if (!$('.' + campo).find('input[name="' + entrada.prop('name') + '"]:checked').length) {
-                                  errors.push({
-                                     'elemento': entrada,
-                                      'error': 'Selecciona una opción',
-                                     });
-                                 } else {
-                                   entrada.siblings('.message').text('');
-                                   entrada.removeClass('invalid');
-                               }
-                             }else if(entrada.is('#tramite1') ) {
+                    if (entrada.val().trim().length === 0) {
 
-                                    if (entrada.val().trim().length === 0) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'No dejar el campo vacío'
+                        });
 
-                                        errors.push({
-                                             'elemento': entrada,
-                                             'error': 'No dejar el campo vacío'
-                                         });
+                    } else {
+                        if (!el.checkValidity()) {
+                            errors.push({
+                                'elemento': entrada,
+                                'error': 'El campo no cumple los requisitos de validación'
+                            });
+                        } else {
+                            entrada.siblings('.message').text('');
+                            entrada.removeClass('invalid');
+                        }
 
-                                     } else {
-                                         if (!el.checkValidity()) {
-                                             errors.push({
-                                                 'elemento': entrada,
-                                                 'error': 'El campo no cumple los requisitos de validación'
-                                             });
-                                        }  
-                                         else {
-                                             entrada.siblings('.message').text('');
-                                             entrada.removeClass('invalid');
-                                         }
+                    }
+                } else if (entrada.is('#preguntau')) {
 
-                                     }
-                             }else if(entrada.is('#preguntau') ) {
+                    if (entrada.val().trim().length === 0) {
 
-                                     if (entrada.val().trim().length === 0) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'No dejar el campo vacío'
+                        });
 
-                                         errors.push({
-                                              'elemento': entrada,
-                                              'error': 'No dejar el campo vacío'
-                                          });
+                    } else {
+                        if (!el.checkValidity()) {
+                            errors.push({
+                                'elemento': entrada,
+                                'error': 'El campo no cumple los requisitos de validación'
+                            });
+                        } else {
+                            entrada.siblings('.message').text('');
+                            entrada.removeClass('invalid');
+                        }
 
-                                      } else {                                         
-                                          if (!el.checkValidity()) {
-                                              errors.push({
-                                                  'elemento': entrada,
-                                                  'error': 'El campo no cumple los requisitos de validación'
-                                              });
-                                         }                                       
-                                          else {
-                                              entrada.siblings('.message').text('');
-                                              entrada.removeClass('invalid');
-                                          }
+                    }
+                } else if (entrada.is('#textarea')) {
 
-                                      }
-                            }else if(entrada.is('#textarea') ) {
+                    if (entrada.val().trim().length === 0) {
 
-                                 if (entrada.val().trim().length === 0) {
+                        errors.push({
+                            'elemento': entrada,
+                            'error': 'No dejar el campo vacío'
+                        });
 
-                                     errors.push({
-                                             'elemento': entrada,
-                                             'error': 'No dejar el campo vacío'
-                                         });
+                    } else {
+                        if (!el.checkValidity()) {
+                            errors.push({
+                                'elemento': entrada,
+                                'error': 'El campo no cumple los requisitos de validación'
+                            });
+                        } else {
+                            entrada.siblings('.message').text('');
+                            entrada.removeClass('invalid');
+                        }
 
-                                     } else {
-                                         if (!el.checkValidity()) {
-                                             errors.push({
-                                                 'elemento': entrada,
-                                                 'error': 'El campo no cumple los requisitos de validación'
-                                             });
-                                     }
-                                         else {
-                                             entrada.siblings('.message').text('');
-                                             entrada.removeClass('invalid');
-                                         }
-
-                                     }
-                                 }               
+                    }
+                }
             });
 
             if (errors.length > 0) {
@@ -498,54 +519,69 @@
                     $('#encuesta input:text, textarea, input:checkbox:checked, input:radio:checked, option:selected')
                         .each(function() {
 
-                            var idPregunta = $(this).attr("idPregunta");                                                       
-                    
+                            var idPregunta = $(this).attr("idPregunta");
 
                             var valor = $(this).val();
 
-                           if(idPregunta != null){
-                            datos.push({
-                                "idPregunta": idPregunta,
-                                "respuesta_texto": valor,                                                                                 
+                            if (idPregunta != null) {
+                                datos.push({
+                                    "idPregunta": idPregunta,
+                                    "respuesta_texto": valor,
                                 });
-                           }
-                                
-                                
-                                                     
+                            }
+
+
+
                         });
-                        console.log(datos);                        
-                    
+
                     let _url = "{{ route('home.encuesta.store') }}";
 
+                    if ($('#estudio').val() != 0 ||
+                        $('#nombreu').val().trim().length != 0 ||
+                        $('#email').val().trim().length != 0 ||
+                        $('#edad').val().trim().length != 0) {
+                        participante = {
+                            idParticipante: null,
+                            estudio: $('#estudio').val(),
+                            nombreu: $('#nombreu').val(),
+                            email: $('#email').val(),
+                            edad: $('#edad').val()
+                        }
+                    } else {
+                        participante = {
+                            idParticipante: '1',
+                            estudio: $('#estudio').val(),
+                            nombreu: $('#nombreu').val(),
+                            email: $('#email').val(),
+                            edad: $('#edad').val()
+                        }
+                    }
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
 
-                    $.ajax({                        
+                    $.ajax({
                         url: _url,
                         type: "POST",
                         data: {
                             data: datos,
                             idCategoria: "{{ $idCategoria }}",
-                            idMunicipio: "{{ $idMunicipio }}",                                                                                                                                     
-                            estudio: $('#estudio').val(),
-                            nombreu: $('#nombreu').val(),
-                            email: $('#email').val(),
-                            edad: $('#edad').val()                      
+                            idMunicipio: "{{ $idMunicipio }}",
+                            participante: participante
                         },
                         dataType: "json",
-                        success: function(response) {   
-                            console.log(response); 
 
-                           location.href = "{{ route('home.encuesta.agradecimiento', [$id = $idCategoria]) }}";
-                                
+                        success: function(response) {
+
+                            location.href =
+                                "{{ route('home.encuesta.agradecimiento', [($id = $idCategoria)]) }}";
 
                         }
                     });
                 } else {
-                   
+
                     event.preventDefault();
                     event.stopPropagation();
                 }
