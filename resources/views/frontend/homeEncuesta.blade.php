@@ -58,20 +58,13 @@
 
             <div class="mb-3">
 
-                <label class="form-label">Nombre</label>
+                <label class="form-label">Sexo</label>
 
-                <input type="text" placeholder="Nombre completo" class="form-control" name="nombreu" id="nombreu">
-
-            </div>
-
-            <div class="mb-3">
-                
-                <label class="form-label"> Correo Electronico</label>
-
-                <input type="email"  placeholder="correo@gmail.com" class="form-control" name="email" id="email">
+                <input type="text" placeholder="Sexo" class="form-control" name="nombreu" id="nombreu">
 
             </div>
 
+            
             <div class="mb-3">
                 
                 <label class="form-label">Edad</label>
@@ -94,6 +87,14 @@
 
                 </select>
             
+            </div>
+
+            <div class="mb-3">
+                
+                <label class="form-label"> Ocupacion</label>
+
+                <input type="text"  placeholder="Ocupacion" class="form-control" name="email" id="email">
+
             </div>
 
         </div>
@@ -143,7 +144,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="pregunta1" id="pregunta2" idPregunta="2">
+                        <input type="text" class="form-control" name="pregunta2" id="pregunta2" idPregunta="2">
                     </div>
                     <div class="col-md-6">
 
@@ -163,7 +164,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="pregunta1" id="pregunta3" idPregunta="3">
+                        <input type="text" class="form-control" name="pregunta3" id="pregunta3" idPregunta="3">
                     </div>
                     <div class="col-md-6">
 
@@ -291,15 +292,11 @@
 
             let errors = [];
 
-            $('.' + campo).find('input,textarea,select').each(function(index, el) {
+            $('#encuesta').find('#pregunta1,#porque,#pregunta2,#porque2,#pregunta3,#porque3,input,#tramite1,#preguntau,#textarea').each(function(index, el) {
 
                 let entrada = $(el);
 
-                if(entrada.prop('idPregunta') != 14){
-                    
-                }
-
-                if (entrada.is('input:text') || entrada.is('textarea')) {
+                if (entrada.is('#pregunta1') ) {
 
                     if (entrada.val().trim().length === 0) {
 
@@ -323,33 +320,157 @@
                         }
 
                     }
-                } else if (entrada.is("select")) {
-                    // Validamos que esté seleccionada una opción del select
-                    if (entrada.val() == 0) {
-                        errors.push({
-                            'elemento': entrada,
-                            'error': 'Selecciona un trámite'
-                        });
-                    } else {
-                        entrada.siblings('.message').text('');
-                        entrada.parent('.form-select').removeClass('invalid');
-                    }
-                } else if (entrada.prop('type') == 'checkbox' || entrada.prop('type') == 'radio') {
+                }else if(entrada.is('#pregunta2') ) {
 
-                    if (!$('.' + campo).find('input[name="' + entrada.prop('name') + '"]:checked').length) {
+                        if (entrada.val().trim().length === 0) {
 
-                        errors.push({
-                            'elemento': entrada,
-                            'error': 'Selecciona una opción',
-                        });
+                            errors.push({
+                                 'elemento': entrada,
+                                 'error': 'No dejar el campo vacío'
+                             });
 
-                    } else {
-                        entrada.siblings('.message').text('');
-                        entrada.removeClass('invalid');
-                    }
+                         } else {
+                             if (!el.checkValidity()) {
+                                 errors.push({
+                                     'elemento': entrada,
+                                     'error': 'El campo no cumple los requisitos de validación'
+                                 });
+                            }
+                             else {
+                                 entrada.siblings('.message').text('');
+                                 entrada.removeClass('invalid');
+                             }
 
-                }
+                         }
+                 }else if(entrada.is('#pregunta3') ) {
 
+                         if (entrada.val().trim().length === 0) {
+
+                              errors.push({
+                              'elemento': entrada,
+                              'error': 'No dejar el campo vacío'
+                               });
+
+                             } else {
+                                 if (!el.checkValidity()) {
+                                     errors.push({
+                                         'elemento': entrada,
+                                         'error': 'El campo no cumple los requisitos de validación'
+                                     });
+                                }
+                                 else {
+                                     entrada.siblings('.message').text('');
+                                     entrada.removeClass('invalid');
+                                 }
+
+                             }
+                            }else if(entrada.is('#porque')){
+                                if(entrada.val() == 0){
+                                    errors.push({
+                                        'elemento': entrada,
+                                        'error': 'Selecciona una razón'                                       
+                                    });
+                                 }else{
+                                     entrada.siblings('.message').text('');
+                                      entrada.parent('.form-select').removeClass('invalid');
+                                     }
+                            }else if(entrada.is('#porque2')){
+                                if(entrada.val()==0){
+                                    errors.push({
+                                        'elemento':entrada,
+                                        'error':'selecciona una razón'
+                                    });
+                                }else{
+                                    entrada.siblings('.message').text('');
+                                    entrada.parent('.form-select').removeClass('invalid');
+                                }
+                            }else if(entrada.is('#porque3')){
+                                if(entrada.val()==0){
+                                    errors.push({
+                                        'elemento':entrada,
+                                        'error':'selecciona una razón'
+                                    });
+                                }else{
+                                    entrada.siblings('.message').text('');
+                                    entrada.parent('.form-select').removeClass('invalid');
+                                }
+                            }else if (entrada.prop('type') == 'radio') {
+                              if (!$('.' + campo).find('input[name="' + entrada.prop('name') + '"]:checked').length) {
+                                  errors.push({
+                                     'elemento': entrada,
+                                      'error': 'Selecciona una opción',
+                                     });
+                                 } else {
+                                   entrada.siblings('.message').text('');
+                                   entrada.removeClass('invalid');
+                               }
+                             }else if(entrada.is('#tramite1') ) {
+
+                                    if (entrada.val().trim().length === 0) {
+
+                                        errors.push({
+                                             'elemento': entrada,
+                                             'error': 'No dejar el campo vacío'
+                                         });
+
+                                     } else {
+                                         if (!el.checkValidity()) {
+                                             errors.push({
+                                                 'elemento': entrada,
+                                                 'error': 'El campo no cumple los requisitos de validación'
+                                             });
+                                        }  
+                                         else {
+                                             entrada.siblings('.message').text('');
+                                             entrada.removeClass('invalid');
+                                         }
+
+                                     }
+                             }else if(entrada.is('#preguntau') ) {
+
+                                     if (entrada.val().trim().length === 0) {
+
+                                         errors.push({
+                                              'elemento': entrada,
+                                              'error': 'No dejar el campo vacío'
+                                          });
+
+                                      } else {                                         
+                                          if (!el.checkValidity()) {
+                                              errors.push({
+                                                  'elemento': entrada,
+                                                  'error': 'El campo no cumple los requisitos de validación'
+                                              });
+                                         }                                       
+                                          else {
+                                              entrada.siblings('.message').text('');
+                                              entrada.removeClass('invalid');
+                                          }
+
+                                      }
+                            }else if(entrada.is('#textarea') ) {
+
+                                 if (entrada.val().trim().length === 0) {
+
+                                     errors.push({
+                                             'elemento': entrada,
+                                             'error': 'No dejar el campo vacío'
+                                         });
+
+                                     } else {
+                                         if (!el.checkValidity()) {
+                                             errors.push({
+                                                 'elemento': entrada,
+                                                 'error': 'El campo no cumple los requisitos de validación'
+                                             });
+                                     }
+                                         else {
+                                             entrada.siblings('.message').text('');
+                                             entrada.removeClass('invalid');
+                                         }
+
+                                     }
+                                 }               
             });
 
             if (errors.length > 0) {
