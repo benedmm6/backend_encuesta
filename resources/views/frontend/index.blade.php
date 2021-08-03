@@ -18,6 +18,7 @@
     ];
 
     @endphp
+     <link rel="stylesheet" href="{!!asset('css/style.css') !!}">
 
     <div class="container">
 
@@ -59,7 +60,7 @@
     
                     <div class="thumbnail">
     
-                        <img src="{{ asset('storage/firmas/segob.png') }}" style=" width: 90%;"class="rounded">
+                        <img src="{{ asset('storage/firmas/segob.png') }}" style=" width: 100%;"class="rounded">
     
                     </div>
     
@@ -69,7 +70,7 @@
     
                     <div class="thumbnail">
     
-                        <img src="{{ asset('storage/firmas/finanzas.png') }}" style=" width: 90%;"class="rounded">
+                        <img src="{{ asset('storage/firmas/finanzas.png') }}" style=" width: 100%;"class="rounded">
     
                     </div>
     
@@ -103,7 +104,7 @@
     
                     <div class="thumbnail">
     
-                        <img src="{{ asset('storage/firmas/cemer.png') }}" style=" width: 90%;"class="rounded">
+                        <img src="{{ asset('storage/firmas/cemer.png') }}" style=" width: 100%;"class="rounded">
     
                     </div>
     

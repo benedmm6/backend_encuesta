@@ -123,9 +123,14 @@ footer .list-inline .list-inline-item {
 .invalid {
   border: 1px solid #a94442;
 }
+h2 {
+    font-size: 30px;
+  }
 
-
-@media (max-width: 992px) {
+@media (max-width: 600px) {
+    h2.responsive {
+        font-size: 24px;
+      }
     .navbar {
         position: relative !important;
     }
