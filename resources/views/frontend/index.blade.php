@@ -31,7 +31,7 @@
     
                     <div class="mx-auto align-self-center px-4 my-5">
     
-                        <h1 class="display-4 fw-bold mb-4 text-primary text-center">{{ $inicio['titulo'] }}</h1>
+                        <h2 class="  text-primary text-center">Primera Campaña de Opinión Ciudadana sobre Trámites Gubernamentales</h2>
     
                         <p class="lead mb-4 text-center">{!! $inicio['descripcion'] !!}</p>
 
@@ -53,17 +53,28 @@
         <section class="py-md-5">
 
             <div class="m-0 row justify-content-center">
-            
+
+
                 <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
     
                     <div class="thumbnail">
     
-                        <img src="{{ asset('storage/firmas/cemer.png') }}" style=" width: 90%;"class="rounded">
+                        <img src="{{ asset('storage/firmas/segob.png') }}" style=" width: 90%;"class="rounded">
     
                     </div>
     
                 </div>
+                
+                <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
     
+                    <div class="thumbnail">
+    
+                        <img src="{{ asset('storage/firmas/finanzas.png') }}" style=" width: 90%;"class="rounded">
+    
+                    </div>
+    
+                </div>
+                    
                 <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
     
                     <img src="{{ asset('storage/firmas/sedec_logo.png') }}" style=" width: 100%;" class="rounded">
@@ -85,6 +96,16 @@
                 <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
     
                     <img src="{{ asset('storage/firmas/saig2.png') }}" style=" width: 100%;" class="rounded">
+    
+                </div>
+
+                <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
+    
+                    <div class="thumbnail">
+    
+                        <img src="{{ asset('storage/firmas/cemer.png') }}" style=" width: 90%;"class="rounded">
+    
+                    </div>
     
                 </div>
 

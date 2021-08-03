@@ -86,21 +86,41 @@ class HomeEncuestaController extends Controller
             foreach ($datos['data'] as $dato) {
                 //echo $dato['idpregunta'];
                // echo $dato;
-               if($request['idMunicipio']!=null){        
-                     usuarios_respuestas::create([
-                       'pregunta' => $dato['idPregunta'],
-                       'respuesta_texto' => $dato['respuesta_texto'],
-                       'id_categoria'=> $idCategoria,
-                       'id_municipio'=>$request['idMunicipio'],
-                       'id_participante'  => $lastId->id
-                   ]);       
+               if($request['idMunicipio']!=null){
+                   if($dato['respuesta_texto']!=null){                      
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => $dato['respuesta_texto'],
+                        'id_categoria'=> $idCategoria,
+                        'id_municipio'=>$request['idMunicipio'],
+                        'id_participante'  => $lastId->id
+                    ]);
+                   }else{
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => 'Dato no determinado',
+                        'id_categoria'=> $idCategoria,
+                        'id_municipio'=>$request['idMunicipio'],
+                        'id_participante'  => $lastId->id
+                    ]);
+                   }        
+                            
                }else{
-                   usuarios_respuestas::create([
-                       'pregunta' => $dato['idPregunta'],
-                       'respuesta_texto' => $dato['respuesta_texto'],
-                       'id_categoria'=> $idCategoria,   
-                       'id_participante'  => $lastId->id                 
-                   ]);             
+                if($dato['respuesta_texto']!=null){                      
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => $dato['respuesta_texto'],
+                        'id_categoria'=> $idCategoria,                       
+                        'id_participante'  => $lastId->id
+                    ]);
+                   }else{
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => 'Dato no determinado',
+                        'id_categoria'=> $idCategoria,                        
+                        'id_participante'  => $lastId->id
+                    ]);
+                   }         
                } 
                           
         }
@@ -111,20 +131,39 @@ class HomeEncuestaController extends Controller
                 //echo $dato['idpregunta'];
                // echo $dato;
                if($request['idMunicipio']!=null){        
-                     usuarios_respuestas::create([
-                       'pregunta' => $dato['idPregunta'],
-                       'respuesta_texto' => $dato['respuesta_texto'],
-                       'id_categoria'=> $idCategoria,
-                       'id_municipio'=>$request['idMunicipio'],
-                       'id_participante' => '1'
-                   ]);       
+                if($dato['respuesta_texto']!=null){                      
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => $dato['respuesta_texto'],
+                        'id_categoria'=> $idCategoria,
+                        'id_municipio'=>$request['idMunicipio'],
+                        'id_participante'  => '1'
+                    ]);
+                   }else{
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => 'Dato no determinado',
+                        'id_categoria'=> $idCategoria,
+                        'id_municipio'=>$request['idMunicipio'],
+                        'id_participante'  => '1'
+                    ]);
+                   }       
                }else{
-                   usuarios_respuestas::create([
-                       'pregunta' => $dato['idPregunta'],
-                       'respuesta_texto' => $dato['respuesta_texto'],                       
-                       'id_categoria'=> $idCategoria,  
-                       'id_participante' => '1'                  
-                   ]);             
+                if($dato['respuesta_texto']!=null){                      
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => $dato['respuesta_texto'],
+                        'id_categoria'=> $idCategoria,                       
+                        'id_participante'  => '1'
+                    ]);
+                   }else{                    
+                    usuarios_respuestas::create([
+                        'pregunta' => $dato['idPregunta'],
+                        'respuesta_texto' => 'Dato no determinado',
+                        'id_categoria'=> $idCategoria,                        
+                        'id_participante'  => '1'
+                    ]);
+                   }             
                } 
                           
            }            
