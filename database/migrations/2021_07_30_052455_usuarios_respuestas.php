@@ -21,7 +21,7 @@ class UsuariosRespuestas extends Migration
             
             $table->text('respuesta_texto')->nullable();
             
-            $table->unsignedBigInteger('id_participante');
+            $table->unsignedBigInteger('id_participante')->nullable();
             
             $table->unsignedBigInteger('id_categoria');
             

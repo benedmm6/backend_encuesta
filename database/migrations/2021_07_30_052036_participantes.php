@@ -17,13 +17,13 @@ class Participantes extends Migration
 
             $table->id();
 
-            $table->string('nombre');
+            $table->string('nombre')->nullable();
 
-            $table->string('email');
+            $table->string('email')->nullable();
 
-            $table->string('edad');
+            $table->string('edad')->nullable();
 
-            $table->string('estudio');
+            $table->string('estudio')->nullable();
             
             $table->timestamps();
 
