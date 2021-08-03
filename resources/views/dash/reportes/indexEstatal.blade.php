@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Tramites')
+@section('title', 'Reporte Estatal')
 
 @section('content_header')
 
@@ -29,7 +29,9 @@
 @stop
 
 @section('content')
+
     <div class="container-fluid">
+
         <h5 class="mb-2">Datos generales</h5>
 
         <div class="row">
@@ -46,15 +48,18 @@
                 </div>
                 <!-- /.info-box -->
             </div>
+
         </div>
 
         <h5 class="mb-2">Resultados de las preguntas</h5>
 
         <div class="row">
 
+            {{-- PREGUNTA NÚMERO 1 --}}
+
             <div class="col-md-12 col-12">
 
-                <div class="card collapsed-card">
+                <div class="card">
 
                     <div class="card-header border-0">
 
@@ -62,7 +67,7 @@
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                <i class="fas fa-plus"></i>
+                                <i class="fas fa-minus"></i>
                             </button>
                         </div>
 
@@ -72,34 +77,74 @@
                         <table class="table table-striped table-valign-middle">
                             <thead>
                                 <tr>
-                                    <th>Nombre del participante</th>
-                                    <th>Correo Electronico</th>
+                                    <th>Genero</th>
+                                    <th>Ocupación</th>
+                                    <th>Edad</th>
+                                    <th>Grado de estudios</th>
                                     <th>Respuesta</th>
-                                    <th>Motivo</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($pregunta1 as $pregunta)
 
                                     <tr>
-                                        <td>
-                                            {{ $pregunta->nombre }}
-                                        </td>
-                                        <td>{{ $pregunta->correo }}</td>
-                                        <td>
-                                            {{ $pregunta->respuesta_texto }}
-                                        </td>
-                                        <td>{{ $pregunta->opcional }}</td>
+                                        <td>{{ $pregunta->nombre }}</td>
+                                        <td>{{ $pregunta->email }}</td>
+                                        <td>{{ $pregunta->edad }}</td>
+                                        <td>{{ $pregunta->estudio }}</td>
+                                        <td>{{ $pregunta->respuesta_texto }}</td>
                                     </tr>
 
                                 @endforeach
 
                             </tbody>
                         </table>
+
+                    </div>
+
+                    <div class="card-footer clearfix">
+
+                        {{ $pregunta1->links() }}
+
                     </div>
                 </div>
 
             </div>
+
+            {{-- MOTIVOS --}}
+
+            <div class="col-md-12 col-12">
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h3 class="card-title">Motivos</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                        <div class="col-md-6 col-12">
+
+                            <canvas id="motivos" width="80px" height="80px" style="height: 80px; width: 80px;"></canvas>
+
+                        </div>
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+
+            {{-- pregunta2  --}}
 
             <div class="col-md-12 col-12">
 
@@ -121,13 +166,15 @@
                     <div class="card-body">
 
                         <canvas id="myChart"
-                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 100px;"
+                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 80%; display: block; width: 100px;"
                             width="2000" height="500" class="chartjs-render-monitor"></canvas>
 
                     </div>
                 </div>
 
             </div>
+
+            {{-- pregunta 3 --}}
 
             <div class="col-md-12 col-12">
 
@@ -150,41 +197,66 @@
                         <table class="table table-striped table-valign-middle">
                             <thead>
                                 <tr>
-                                    <th>Nombre del participante</th>
-                                    <th>Correo Electronico</th>
-                                    <th>Trámites</th>
+                                    <th>#</th>
+                                    <th>Usuario</th>
+                                    <th>Genero</th>
+                                    <th>Edad</th>
+                                    <th>Estudio</th>
+                                    <th>Respuesta Texto</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach ($pregunta3 as $item)
+                                @foreach ($pregunta3 as $pregunta)
+
+                                    @php
+                                        if($pregunta->estudio == '0'){
+                                            $estudio = 'Dato no proporcionado';
+                                        }else{
+                                            $estudio = $pregunta->estudio;
+                                        }
+                                    @endphp
+
+                                    @if ($pregunta->id == 1)
+
+                                        <tr>
+                                            <td>{{ ($loop->index)+1 }}</td>
+                                            <td>{{ $pregunta->nombre }}</td>
+                                            <td>Dato no proporcionado</td>
+                                            <td>{{ $pregunta->edad }}</td>
+                                            <td>{{ $estudio }}</td>
+                                            <td>{{ $pregunta->respuesta_texto }}</td>
+                                        </tr>
+                                        
+                                    @else
 
                                     <tr>
-                                        <td>
-                                            {{ $item[0]->nombre }}
-                                        </td>
-                                        <td>{{ $item[0]->correo }}</td>
-                                        <td>
-                                            @foreach ($tramites as $tramite)
-                                                @if ($tramite->id_participante == $item[0]->id_participante)
-
-                                                    <ul>{{ $tramite->respuesta_texto }}</ul>
-
-                                                @endif
-
-                                            @endforeach
-                                        </td>
+                                        <td>{{ ($loop->index)+1 }}</td>
+                                        <td>Usuario Anónimo</td>
+                                        <td>{{ $pregunta->nombre }}</td>
+                                        <td>{{ $pregunta->edad }}</td>
+                                        <td>{{ $estudio }}</td>
+                                        <td>{{ $pregunta->respuesta_texto }}</td>
                                     </tr>
+                                        
+                                    @endif
 
                                 @endforeach
-
 
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="card-footer clearfix">
+
+                        {{ $pregunta3->links() }}
+
+                    </div>
                 </div>
 
             </div>
+
+            {{-- PREGUNTA 4 --}}
 
             <div class="col-md-12 col-12">
 
@@ -204,31 +276,64 @@
                     </div>
 
                     <div class="card-body table-responsive p-0">
+
                         <table class="table table-striped table-valign-middle">
                             <thead>
                                 <tr>
-                                    <th>Nombre del participante</th>
-                                    <th>Correo Electronico</th>
-                                    <th>Respuesta</th>
+                                    <th>#</th>
+                                    <th>Usuario</th>
+                                    <th>Genero</th>
+                                    <th>Edad</th>
+                                    <th>Estudio</th>
+                                    <th>Respuesta Texto</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pregunta4 as $pregunta4)
+
+                                @foreach ($pregunta4 as $pregunta)
+
+                                    @php
+                                        if($pregunta->estudio == '0'){
+                                            $estudio = 'Dato no proporcionado';
+                                        }else{
+                                            $estudio = $pregunta->estudio;
+                                        }
+                                    @endphp
+
+                                    @if ($pregunta->id == 1)
+
+                                        <tr>
+                                            <td>{{ ($loop->index)+1 }}</td>
+                                            <td>{{ $pregunta->nombre }}</td>
+                                            <td>Dato no proporcionado</td>
+                                            <td>{{ $pregunta->edad }}</td>
+                                            <td>{{ $estudio }}</td>
+                                            <td>{{ $pregunta->respuesta_texto }}</td>
+                                        </tr>
+                                        
+                                    @else
 
                                     <tr>
-                                        <td>
-                                            {{ $pregunta4->nombre }}
-                                        </td>
-                                        <td>{{ $pregunta4->correo }}</td>
-                                        <td>
-                                            {{ $pregunta4->respuesta_texto }}
-                                        </td>
+                                        <td>{{ ($loop->index)+1 }}</td>
+                                        <td>Usuario Anónimo</td>
+                                        <td>{{ $pregunta->nombre }}</td>
+                                        <td>{{ $pregunta->edad }}</td>
+                                        <td>{{ $estudio }}</td>
+                                        <td>{{ $pregunta->respuesta_texto }}</td>
                                     </tr>
+                                        
+                                    @endif
 
                                 @endforeach
 
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="card-footer clearfix">
+
+                        {{ $pregunta4->links() }}
+
                     </div>
                 </div>
 
@@ -251,31 +356,64 @@
                     </div>
 
                     <div class="card-body table-responsive p-0">
+
                         <table class="table table-striped table-valign-middle">
                             <thead>
                                 <tr>
-                                    <th>Nombre del participante</th>
-                                    <th>Correo Electronico</th>
-                                    <th>Comentario</th>
+                                    <th>#</th>
+                                    <th>Usuario</th>
+                                    <th>Genero</th>
+                                    <th>Edad</th>
+                                    <th>Estudio</th>
+                                    <th>Respuesta Texto</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach ($pregunta5 as $pregunta)
 
+                                    @php
+                                        if($pregunta->estudio == '0'){
+                                            $estudio = 'Dato no proporcionado';
+                                        }else{
+                                            $estudio = $pregunta->estudio;
+                                        }
+                                    @endphp
+
+                                    @if ($pregunta->id == 1)
+
+                                        <tr>
+                                            <td>{{ ($loop->index)+1 }}</td>
+                                            <td>{{ $pregunta->nombre }}</td>
+                                            <td>Dato no proporcionado</td>
+                                            <td>{{ $pregunta->edad }}</td>
+                                            <td>{{ $estudio }}</td>
+                                            <td>{{ $pregunta->respuesta_texto }}</td>
+                                        </tr>
+                                        
+                                    @else
+
                                     <tr>
-                                        <td>
-                                            {{ $pregunta->nombre }}
-                                        </td>
-                                        <td>{{ $pregunta->correo }}</td>
-                                        <td>
-                                            {{ $pregunta->respuesta_texto }}
-                                        </td>
+                                        <td>{{ ($loop->index)+1 }}</td>
+                                        <td>Usuario Anónimo</td>
+                                        <td>{{ $pregunta->nombre }}</td>
+                                        <td>{{ $pregunta->edad }}</td>
+                                        <td>{{ $estudio }}</td>
+                                        <td>{{ $pregunta->respuesta_texto }}</td>
                                     </tr>
+                                        
+                                    @endif
 
                                 @endforeach
 
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="card-footer clearfix">
+
+                        {{ $pregunta5->links() }}
+
                     </div>
                 </div>
 
@@ -289,35 +427,9 @@
 
 
 
-@php
-
-$valor1 = 0;
-
-$valor2= 0;
-
-    if(isset($pregunta2[0]->total)){
-        $valor1 = $pregunta2[0]->total;
-    }else{
-        $valor1 = 0;
-    }
-
-    if(isset($pregunta2[1]->total)){
-        $valo2 = $pregunta2[1]->total;
-    }else{
-        $valor2 = 0;
-    }
-
-@endphp
-
-
 @section('js')
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
-
-        let valor1 = '{!! $valor1 !!}';
-
-        let valor2 = '{{ $valor2 }}';
-
 
         var myChart = new Chart(ctx, {
             type: 'pie',
@@ -325,7 +437,14 @@ $valor2= 0;
                 labels: ['Si', 'No'],
                 datasets: [{
                     label: '# of Votes',
-                    data: [valor1, valor2],
+                    data: [@php 
+
+                    foreach ($pregunta2 as $key => $value) {
+                                    echo "'".$value['total']."',";
+                                }
+                    
+
+                    @endphp],
                     backgroundColor: [
                         'rgb(54, 162, 235)',
                         'rgb(255, 205, 86)'
@@ -338,5 +457,39 @@ $valor2= 0;
                 responsive: true,
             }
         });
+
+        var ctx2 = document.getElementById('motivos').getContext('2d');
+
+        let titulos = ['Tiempo de Respuesta o Resolución demasiado largo', 
+                 'Demasiados requisitos', 
+                 'Mala atención del Servidor Público', 
+                 'Trámite muy complejo, proceso tedioso y largo', 
+                 'Solicitud de dadivas para su agilización (Corrupción)', 
+                 'No conozco las oficinas para realizarlo', 
+                 'Dificultad para localizar las oficinas de atención',];
+
+        var myChart2 = new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                labels: [ @php  foreach ($motivos as $key => $value) {
+        echo "'".$value['respuesta_texto']."',";
+    } @endphp],
+                datasets: [{
+                    label: '',
+                    data: [@php 
+                                foreach ($motivos as $key => $value) {
+                                    echo "'".$value['total']."',";
+                                }
+                    @endphp ],
+                    backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                    hoverOffset: 4
+                }]
+            },
+            option: {
+                maintainAspectRatio: false,
+                responsive: true,
+            }
+        });
+
     </script>
 @stop

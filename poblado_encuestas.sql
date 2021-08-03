@@ -11,7 +11,7 @@ INSERT INTO categorias(id,nombre_categoria) VALUES(2,'Municipal');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (1,'Balancán','iconos/balancan.png');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (2,'Cárdenas','iconos/cardenas_0.png');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (3,'Centla','iconos/centla.png');
-INSERT INTO municipios (id,nombre_municipio,icono) VALUES (4,'centro','iconos/centro.png');
+INSERT INTO municipios (id,nombre_municipio,icono) VALUES (4,'Centro','iconos/centro.png');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (5,'Comalcalco','iconos/comalcalco.png');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (6,'Cunduacán','iconos/cunduacan.png');
 INSERT INTO municipios (id,nombre_municipio,icono) VALUES (7,'Emiliano Zapata','iconos/emiliano zapata.png');
@@ -28,5 +28,5 @@ INSERT INTO municipios (id,nombre_municipio,icono) VALUES (17,'Tenosique','icono
 
 /*========== PARTICIPANTES ==========*/
 
-INSERT INTO participantes(id,nombre,email,edad,estudio) VALUES (1,'Usuario Anónimo', NULL, NULL, NULL);
+INSERT INTO participantes(id,nombre,email,edad,estudio) VALUES (1,'Usuario Anónimo', 'DATO NO PROPORCIONADO', 'DATO NO PROPORCIONADO', 'DATO NO PROPORCIONADO');
 
