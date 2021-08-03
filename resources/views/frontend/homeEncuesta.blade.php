@@ -82,7 +82,7 @@
 
                 <select name="estudio" id="estudio" class="form-select">
 
-                    <option value="0"> Seleccione una opción</option>
+                    <option value=""> Seleccione una opción</option>
                     <option value="secunadria">Primaria</option>
                     <option value="Bachillerato">Bachillerato</option>
                     <option value="Licenciatura">Licenciatura</option>
