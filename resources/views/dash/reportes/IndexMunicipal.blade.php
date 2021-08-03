@@ -507,7 +507,14 @@
             var myChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['Si', 'No'],
+                    labels: [@php 
+
+                        foreach ($pregunta2 as $key => $value) {
+                                        echo "'".$value['respuesta_texto']."',";
+                                    }
+                    
+                    
+                    @endphp],
                     datasets: [{
                         label: '# of Votes',
                         data: [@php 

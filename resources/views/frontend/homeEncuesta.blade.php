@@ -16,8 +16,6 @@
 
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
 
-    <link rel="stylesheet" href="{!! asset('css/select2.min.css') !!}">
-
 </head>
 
 <body class="bg-light">
@@ -61,9 +59,9 @@
 
             <div class="mb-3">
 
-                <label class="form-label">Sexo</label>
+                <label class="form-label">Género</label>
 
-                <input type="text" placeholder="Sexo" class="form-control" name="nombreu" id="nombreu">
+                <input type="text" placeholder="Género" class="form-control" name="nombreu" id="nombreu">
 
             </div>
 
@@ -82,8 +80,9 @@
 
                 <select name="estudio" id="estudio" class="form-select">
 
-                    <option value="0"> Seleccione una opción</option>
-                    <option value="secunadria">Primaria</option>
+                    <option value=""> Seleccione una opción</option>
+                    <option value="Primaria">Primaria</option>
+                    <option value="Secundaria">Secundaria</option>
                     <option value="Bachillerato">Bachillerato</option>
                     <option value="Licenciatura">Licenciatura</option>
                     <option value="Posgrado">Posgrado</option>
@@ -94,7 +93,7 @@
 
             <div class="mb-3">
 
-                <label class="form-label"> Ocupacion</label>
+                <label class="form-label"> Ocupación</label>
 
                 <input type="text" placeholder="Ocupacion" class="form-control" name="email" id="email">
 
@@ -116,7 +115,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">¿Porque?</label>
+                        <label for="" class="form-label">¿Por qué?</label>
                     </div>
                 </div>
 
@@ -210,14 +209,14 @@
 
                 <div class="form-check">
 
-                    <input class="form-check-input " type="radio" id="option1" name="option2" value="si" name="status"
+                    <input class="form-check-input " type="radio" id="option1" name="option2" value="Si" name="status"
                         idPregunta="7">
                     <label class="form-check-label" for="flexRadioDefault1">Si</label>
 
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" id="option2" name="option2" value="no" name="status"
+                    <input class="form-check-input" type="radio" id="option2" name="option2" value="No" name="status"
                         idPregunta="7">
                     <label class="form-check-label" for="flexRadioDefault1">No</label>
                 </div>
@@ -225,7 +224,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">¿Qué tramite le gustaría se realizara en línea?</label>
+                <label class="form-label">¿Qué trámite le gustaría se realizara en línea?</label>
 
                 <div class="col-md-12 mb-3">
 
@@ -261,7 +260,7 @@
 
             <div class="mb-3">
 
-                <label class="form-label">¿En que tramite te han pedido soborno?</label>
+                <label class="form-label">¿En que trámite te han pedido soborno?</label>
 
                 <input type="text" class="form-control" name="preguntau" id="preguntau" idPregunta="13">
 
@@ -270,7 +269,7 @@
 
             <div class="mb-3">
                 <label class="form-label">
-                    Ayúdanos a Mejorar tu experiencia en la realización de los tramites gubernamentales a través de este
+                    Ayúdanos a Mejorar tu experiencia en la realización de los trámites gubernamentales a través de este
                     mecanismo de opinión ciudadana, es importante emita sus comentarios:
                 </label>
 

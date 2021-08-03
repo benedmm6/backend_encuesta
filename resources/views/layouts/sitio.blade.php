@@ -47,10 +47,14 @@
                     <li class="nav-item d-flex">
 
                         <a class="nav-link align-self-center text-white" href="{{ route('home') }}">Inicio</a>
-                        <hr>
-                        <a class="nav-link align-self-center text-white" href="{{route('home.categorias')}}">Categorías</a>
-
+                        
                     </li>
+
+                    <li class="nav-item d-flex">
+                        <a class="nav-link align-self-center text-white" href="{{route('home.categorias')}}">Categorías</a>
+                    </li>
+
+                </ul>
 
                  
 
