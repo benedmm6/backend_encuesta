@@ -40,6 +40,13 @@
                         </p>
     
                         <a href="{{ route('home.categorias') }}" class="btn btn-primary mb-5">Encuestas</a>
+
+                        <h2 class="  text-primary text-center">Dependencias participantes</h2>         
+                    
+                         <p> <h3 class="  text-primary text-center"> Convocatoria</h3> </p>
+                         
+
+                         <a href="{{ asset('storage/firmas/Convocatoria 1.1 actualizada 30-07-2021 sin nombres.pdf') }}" class="btn btn-primary mb-5">Descargar</a>
     
                     </div>
     
@@ -60,7 +67,7 @@
     
                     <div class="thumbnail">
     
-                        <img src="{{ asset('storage/firmas/segob.png') }}" style=" width: 100%;"class="rounded">
+                        <img src="{{ asset('storage/firmas/segob.png') }}" style=" width: 70%;"class="rounded">
     
                     </div>
     
@@ -70,7 +77,7 @@
     
                     <div class="thumbnail">
     
-                        <img src="{{ asset('storage/firmas/finanzas.png') }}" style=" width: 100%;"class="rounded">
+                        <img src="{{ asset('storage/firmas/finanzas.png') }}" style=" width: 90%;"class="rounded">
     
                     </div>
     
@@ -78,13 +85,13 @@
                     
                 <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
     
-                    <img src="{{ asset('storage/firmas/sedec_logo.png') }}" style=" width: 100%;" class="rounded">
+                    <img src="{{ asset('storage/firmas/sedec.png') }}" style=" width: 100%;" class="rounded">
     
                 </div>
     
                 <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
     
-                    <img src="{{ asset('storage/firmas/logo-web.png') }}" style=" width: 100%;" class="rounded">
+                    <img src="{{ asset('storage/firmas/logo-web.png') }}" style=" width: 80%;" class="rounded">
     
                 </div>
     
@@ -96,7 +103,7 @@
     
                 <div class="col-auto col-lg-4 col-md-4 col-sm-8 p-5 text-center">
     
-                    <img src="{{ asset('storage/firmas/saig2.png') }}" style=" width: 100%;" class="rounded">
+                    <img src="{{ asset('storage/firmas/saig2.png') }}" style=" width: 80%;" class="rounded">
     
                 </div>
 
@@ -104,7 +111,7 @@
     
                     <div class="thumbnail">
     
-                        <img src="{{ asset('storage/firmas/cemer.png') }}" style=" width: 100%;"class="rounded">
+                        <img src="{{ asset('storage/firmas/cemer.png') }}" style=" width: 70%;"class="rounded">
     
                     </div>
     

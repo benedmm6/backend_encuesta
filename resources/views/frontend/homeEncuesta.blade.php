@@ -54,6 +54,7 @@
         <div id="generales">
 
             <h2>Datos Generales</h2>
+            <p>(Opcional)</p>
 
             <hr class="mb-4">
 
@@ -119,17 +120,15 @@
                     </div>
                 </div>
 
-
                 <div class="row mb-3">
-
+                   
                     <div class="col-md-6">
-
-                        <input type="text" class="form-control" name="pregunta1" id="pregunta1" idPregunta="1">
+                       <label>1.-<label>
+                     <input type="text" class="form-control" name="pregunta1" id="pregunta1" idPregunta="1" placeholder="Escriba el trámite">
 
                     </div>
 
                     <div class="col-md-6">
-
                         <select name="porque" id="porque" class="form-select">
                             <option value="0">Selecciona una opción</option>
                             <option idPregunta="4" value="Demasiados requisitos">Demasiados requisitos</option>
@@ -152,7 +151,8 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="pregunta2" id="pregunta2" idPregunta="2">
+                        <label>2.-<label>
+                        <input type="text" class="form-control" name="pregunta2" id="pregunta2" idPregunta="2" placeholder="Escriba el trámite">
                     </div>
                     <div class="col-md-6">
 
@@ -178,7 +178,8 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="pregunta3" id="pregunta3" idPregunta="3">
+                        <label>3.-<label>
+                        <input type="text" class="form-control" name="pregunta3" id="pregunta3" idPregunta="3" placeholder="Escriba el trámite">
                     </div>
                     <div class="col-md-6">
 
@@ -205,7 +206,7 @@
 
             <div class="mb-3">
 
-                <label class="form-label">¿Conoces el portal de trámites Tabasco?</label>
+                <label class="form-label">¿Conoces el Portal de Trámites del gobierno del estado?</label>
 
                 <div class="form-check">
 
@@ -224,35 +225,35 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">¿Qué trámite le gustaría se realizara en línea?</label>
+                <label class="form-label">¿Qué trámite le gustaría se realizaran en línea?</label>
 
                 <div class="col-md-12 mb-3">
-
-                    <input type="text" name="tramiter1" id="tramite1" class="form-control" idPregunta="8">
+                    <label>1.-<label>
+                    <input type="text" name="tramiter1" id="tramite1" class="form-control" idPregunta="8" placeholder="Escriba el trámite">
 
                 </div>
 
                 <div class="col-md-12 mb-3">
-
-                    <input type="text" name="tramiter2" id="tramite2" class="form-control" idPregunta="9">
-
-                </div>
-
-                <div class="col-md-12 mb-3">
-
-                    <input type="text" name="tramiter3" id="tramite3" class="form-control" idPregunta="10">
+                    <label>2.-<label>
+                    <input type="text" name="tramiter2" id="tramite2" class="form-control" idPregunta="9" placeholder="Escriba el trámite">
 
                 </div>
 
                 <div class="col-md-12 mb-3">
-
-                    <input type="text" name="tramiter4" id="tramite4" class="form-control" idPregunta="11">
+                    <label>3.-<label>
+                    <input type="text" name="tramiter3" id="tramite3" class="form-control" idPregunta="10" placeholder="Escriba el trámite">
 
                 </div>
 
                 <div class="col-md-12 mb-3">
+                    <label>4.-<label>
+                    <input type="text" name="tramiter4" id="tramite4" class="form-control" idPregunta="11" placeholder="Escriba el trámite">
 
-                    <input type="text" name="tramiter5" id="tramite5" class="form-control" idPregunta="12">
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <label>5.-<label>
+                    <input type="text" name="tramiter5" id="tramite5" class="form-control" idPregunta="12" placeholder="Escriba el trámite">
 
                 </div>
 
@@ -262,14 +263,14 @@
 
                 <label class="form-label">¿En que trámite te han pedido soborno?</label>
 
-                <input type="text" class="form-control" name="preguntau" id="preguntau" idPregunta="13">
+                <input type="text" class="form-control" name="preguntau" id="preguntau" idPregunta="13" placeholder="Escriba el tramite">
 
 
             </div>
 
             <div class="mb-3">
                 <label class="form-label">
-                    Ayúdanos a Mejorar tu experiencia en la realización de los trámites gubernamentales a través de este
+                    Ayúdanos a mejorar tu experiencia en la realización de los trámites gubernamentales a través de este
                     mecanismo de opinión ciudadana, es importante emita sus comentarios:
                 </label>
 
