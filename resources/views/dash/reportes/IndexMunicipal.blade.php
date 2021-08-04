@@ -476,7 +476,7 @@
 
                             <div class="card-footer clearfix">
 
-                                {{ $pregunta5->links() }}
+                                {{ $pregunta5->withQueryString()->links() }}
 
                             </div>
                         </div>
