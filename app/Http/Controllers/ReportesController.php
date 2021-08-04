@@ -153,11 +153,9 @@ class ReportesController extends Controller
 
             return view('dash.reportes.indexMunicipal', compact('municipios','motivos','pregunta1','pregunta2','pregunta3','pregunta4','pregunta5','busqueda'));
 
-        }else{
+        }
 
             return view('dash.reportes.indexMunicipal', compact('municipios'));
-
-        }
 
       
     }
