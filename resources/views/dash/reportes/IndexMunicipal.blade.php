@@ -83,7 +83,7 @@
 
         <h5 class="mb-2">Resultados de las preguntas</h5>
 
-        @if (isset($busqueda) && $busqueda != 0)
+        @if ($busqueda != 0)
 
             <div class="row">
 
@@ -487,7 +487,6 @@
 
                 
             </div>
-
             
         @endif
 

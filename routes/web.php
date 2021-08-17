@@ -79,9 +79,8 @@ Route::resource('roles', RolesController::class)->names('admin.roles');
 Route::resource('permisos', PermisosController::class)->names('admin.permisos');
 
 // REPORTES
-Route::resource('reportes', ReportesController::class)->names('admin.reporte');
 
 Route::get('reporte/estatal', [ReportesController::class, 'indexEstatal'])->name('admin.reporte.estatal');
 
-Route::get('reporte/municipal', [ReportesController::class, 'indexMunicipal'])->name('admin.reporte.municipal');
+Route::get('reporte/municipal{id?}', [ReportesController::class, 'indexMunicipal'])->name('admin.reporte.municipal');
 

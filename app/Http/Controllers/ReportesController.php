@@ -19,7 +19,7 @@ class ReportesController extends Controller
      */
     public function index()
     {
-        return view('dash.reportes.indexReportes');
+       
     }
 
     public function indexEstatal()
@@ -87,9 +87,7 @@ class ReportesController extends Controller
 
         $busqueda= $request->get('municipio');
 
-        $municipios= municipios::select('nombre_municipio','id')->get();
-
-        if($busqueda != 0  || $busqueda != null){
+        $municipios = municipios::select('nombre_municipio','id')->get();
 
             $pregunta1 = usuarios_respuestas::select(DB::raw("IFNULL(participantes.email, 'Datos no proporcionados') AS email, 
                                                             IFNULL(participantes.nombre, 'Datos no proporcionados') AS nombre,
@@ -152,11 +150,6 @@ class ReportesController extends Controller
                                         ->paginate(10);
 
             return view('dash.reportes.indexMunicipal', compact('municipios','motivos','pregunta1','pregunta2','pregunta3','pregunta4','pregunta5','busqueda'));
-
-        }
-
-            return view('dash.reportes.indexMunicipal', compact('municipios'));
-
       
     }
 
