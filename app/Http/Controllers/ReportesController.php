@@ -149,7 +149,7 @@ class ReportesController extends Controller
                                         ->whereNotNull('respuesta_texto')
                                         ->paginate(10);
 
-            return view('dash.reportes.indexMunicipal', compact('municipios','motivos','pregunta1','pregunta2','pregunta3','pregunta4','pregunta5','busqueda'));
+            return view('dash.reportem.municipal', compact('municipios','motivos','pregunta1','pregunta2','pregunta3','pregunta4','pregunta5','busqueda'));
       
     }
 
