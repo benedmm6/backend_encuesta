@@ -343,49 +343,7 @@
                         }
 
                     }
-                } else if (entrada.is('#pregunta2')) {
-
-                    if (entrada.val().trim().length === 0) {
-
-                        errors.push({
-                            'elemento': entrada,
-                            'error': 'No dejar el campo vacío'
-                        });
-
-                    } else {
-                        if (!el.checkValidity()) {
-                            errors.push({
-                                'elemento': entrada,
-                                'error': 'El campo no cumple los requisitos de validación'
-                            });
-                        } else {
-                            entrada.siblings('.message').text('');
-                            entrada.removeClass('invalid');
-                        }
-
-                    }
-                } else if (entrada.is('#pregunta3')) {
-
-                    if (entrada.val().trim().length === 0) {
-
-                        errors.push({
-                            'elemento': entrada,
-                            'error': 'No dejar el campo vacío'
-                        });
-
-                    } else {
-                        if (!el.checkValidity()) {
-                            errors.push({
-                                'elemento': entrada,
-                                'error': 'El campo no cumple los requisitos de validación'
-                            });
-                        } else {
-                            entrada.siblings('.message').text('');
-                            entrada.removeClass('invalid');
-                        }
-
-                    }
-                } else if (entrada.is('#porque')) {
+                }  else if (entrada.is('#porque')) {
                     if (entrada.val() == 0) {
                         errors.push({
                             'elemento': entrada,
@@ -395,37 +353,7 @@
                         entrada.siblings('.message').text('');
                         entrada.parent('.form-select').removeClass('invalid');
                     }
-                } else if (entrada.is('#porque2')) {
-                    if (entrada.val() == 0) {
-                        errors.push({
-                            'elemento': entrada,
-                            'error': 'selecciona una razón'
-                        });
-                    } else {
-                        entrada.siblings('.message').text('');
-                        entrada.parent('.form-select').removeClass('invalid');
-                    }
-                } else if (entrada.is('#porque3')) {
-                    if (entrada.val() == 0) {
-                        errors.push({
-                            'elemento': entrada,
-                            'error': 'selecciona una razón'
-                        });
-                    } else {
-                        entrada.siblings('.message').text('');
-                        entrada.parent('.form-select').removeClass('invalid');
-                    }
-                } else if (entrada.prop('type') == 'radio') {
-                    if (!$('.' + campo).find('input[name="' + entrada.prop('name') + '"]:checked').length) {
-                        errors.push({
-                            'elemento': entrada,
-                            'error': 'Selecciona una opción',
-                        });
-                    } else {
-                        entrada.siblings('.message').text('');
-                        entrada.removeClass('invalid');
-                    }
-                } else if (entrada.is('#tramite1')) {
+                }  else if (entrada.is('#tramite1')) {
 
                     if (entrada.val().trim().length === 0) {
 
