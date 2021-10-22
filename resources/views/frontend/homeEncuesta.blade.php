@@ -150,7 +150,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="pregunta2" id="pregunta2" idPregunta="2" placeholder="Segundo Trámite">
+                        <input type="text" class="form-control" name="pregunta2" id="pregunta2" idPregunta="2" placeholder="Segundo Trámite (Opcional)">
                     </div>
                     <div class="col-md-6">
 
@@ -176,7 +176,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-6">                      
-                        <input type="text" class="form-control" name="pregunta3" id="pregunta3" idPregunta="3" placeholder="Tercer Trámite">
+                        <input type="text" class="form-control" name="pregunta3" id="pregunta3" idPregunta="3" placeholder="Tercer Trámite (Opcional)">
                     </div>
                     <div class="col-md-6">
 
@@ -232,25 +232,25 @@
 
                 <div class="col-md-12 mb-3">
 
-                    <input type="text" name="tramiter2" id="tramite2" class="form-control" idPregunta="9" placeholder="Segundo Trámite" >
+                    <input type="text" name="tramiter2" id="tramite2" class="form-control" idPregunta="9" placeholder="Segundo Trámite (Opcional)" >
 
                 </div>
 
                 <div class="col-md-12 mb-3">
 
-                    <input type="text" name="tramiter3" id="tramite3" class="form-control" idPregunta="10" placeholder="Tercer Trámite" >
+                    <input type="text" name="tramiter3" id="tramite3" class="form-control" idPregunta="10" placeholder="Tercer Trámite (Opcional)" >
 
                 </div>
 
                 <div class="col-md-12 mb-3">
 
-                    <input type="text" name="tramiter4" id="tramite4" class="form-control" idPregunta="11" placeholder="Cuarto Trámite" >
+                    <input type="text" name="tramiter4" id="tramite4" class="form-control" idPregunta="11" placeholder="Cuarto Trámite (Opcional)" >
 
                 </div>
 
                 <div class="col-md-12 mb-3">
                 
-                    <input type="text" name="tramiter5" id="tramite5" class="form-control" idPregunta="12" placeholder="Quinto Trámite" >
+                    <input type="text" name="tramiter5" id="tramite5" class="form-control" idPregunta="12" placeholder="Quinto Trámite (Opcional)" >
 
                 </div>
 
